@@ -38,12 +38,13 @@
 }
 
 .nav-links a {
-    color: #fff;
     text-decoration: none;
+    height: 50px;
+
 }
 
 .nav-links a:hover {
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 /* Hamburger icon */
@@ -95,5 +96,7 @@
 }
 
 a {
-    background-color: #3D9970;
+    background-color: white;
+    border: 1px solid orange;
+    color: orange;
 }
