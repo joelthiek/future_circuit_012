@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Template1 = () => {
+const Template2 = () => {
   return (
     <div>
       
@@ -8,4 +8,4 @@ const Template1 = () => {
   )
 }
 
-export default Template1
+export default Template2
