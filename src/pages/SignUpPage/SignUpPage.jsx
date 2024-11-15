@@ -45,7 +45,7 @@ const SignUpPage = () => {
             <input type="checkbox" id="agree" />
             <label htmlFor="agree">I agree to all statements in <a href="#terms">Terms of service</a></label>
           </div>
-          <button type="submit">Register</button>
+          <button className='submitButton' type="submit">Register</button>
         </form>
         <div className="already-member" >
           <a href="/auth">I am already a member</a>

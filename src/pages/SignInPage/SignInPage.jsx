@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import { logIn, signInWithGoogle } from '../../firebase/authService';
 import './SignInPage.css';
+import Modal from './modal';
+import ResetPassword from './resetPassword';
 import googleImage from '../../assets/image/google_image.png';
 import LoginImage from '../../assets/image/Login_image.jpg';
 
 const SignInPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleLogIn = async (e) => {
     e.preventDefault();
@@ -72,7 +75,9 @@ const SignInPage = () => {
             Log in with Google
           </button>
         </div>
-
+        <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+          <ResetPassword />
+        </Modal>
       </div>
       <div className="login-image">
         <img src={LoginImage} alt="Login Image" />
