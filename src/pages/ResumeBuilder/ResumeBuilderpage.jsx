@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
-import './ResumeBuilder.css';
+import './ResumeBuilderpage.css';
 
 const templates = {
   modern: {
@@ -28,9 +28,9 @@ export default function ResumeBuilder() {
     title: 'Full Stack Web Developer',
     summary: 'Innovative and adaptable Full Stack Developer skilled in the MERN stack with expertise in building scalable web applications. Adept at utilizing Generative AI and quickly mastering new technologies. Strong collaboration and problem-solving skills, committed to delivering efficient and reliable solutions.',
     contact: {
-      phone: '+919594558862',
+      phone: '+9195',
       email: 'himanshuladekar21@gmail.com',
-      location: 'Umred, Maharashtra',
+      location: 'Maharashtra',
       linkedin: 'himanshu-ladekar-7566b9194',
       website: 'himanshuladekar',
     },
@@ -51,6 +51,21 @@ export default function ResumeBuilder() {
       soft: 'Teamwork | Effective Communication | Attention to Detail',
     },
     profilePhoto: '/placeholder.svg?height=150&width=150',
+    experience: [
+      {
+        title: 'Web Developer Intern',
+        company: 'Tech Solutions Inc.',
+        date: 'June 2022 - August 2022',
+        description: 'Assisted in developing responsive web applications using React and Node.js.',
+      },
+    ],
+    certifications: [
+      {
+        name: 'AWS Certified Developer - Associate',
+        issuer: 'Amazon Web Services',
+        date: 'September 2023',
+      },
+    ],
   });
 
   const [currentTemplate, setCurrentTemplate] = useState(templates.modern);
@@ -62,10 +77,10 @@ export default function ResumeBuilder() {
 
   const handleInputChange = (section, field, value, index = null) => {
     setUserInfo(prevInfo => {
-      if (section === 'education' && index !== null) {
-        const newEducation = [...prevInfo.education];
-        newEducation[index] = { ...newEducation[index], [field]: value };
-        return { ...prevInfo, education: newEducation };
+      if (['education', 'experience', 'certifications'].includes(section) && index !== null) {
+        const newArray = [...prevInfo[section]];
+        newArray[index] = { ...newArray[index], [field]: value };
+        return { ...prevInfo, [section]: newArray };
       } else if (typeof prevInfo[section] === 'object' && !Array.isArray(prevInfo[section])) {
         return { ...prevInfo, [section]: { ...prevInfo[section], [field]: value } };
       } else {
@@ -74,17 +89,20 @@ export default function ResumeBuilder() {
     });
   };
 
-  const addEducation = () => {
+  const addItem = (section) => {
     setUserInfo(prevInfo => ({
       ...prevInfo,
-      education: [...prevInfo.education, { degree: '', school: '', date: '' }]
+      [section]: [...prevInfo[section], section === 'experience'
+        ? { title: '', company: '', date: '', description: '' }
+        : { name: '', issuer: '', date: '' }
+      ]
     }));
   };
 
-  const removeEducation = (index) => {
+  const removeItem = (section, index) => {
     setUserInfo(prevInfo => ({
       ...prevInfo,
-      education: prevInfo.education.filter((_, i) => i !== index)
+      [section]: prevInfo[section].filter((_, i) => i !== index)
     }));
   };
 
@@ -120,9 +138,9 @@ export default function ResumeBuilder() {
   };
 
   return (
-    <div className="resume-builder" style={{fontFamily: currentTemplate.fontFamily, backgroundColor: currentTemplate.backgroundColor}}>
+    <div className="resume-builder" style={{ fontFamily: currentTemplate.fontFamily, backgroundColor: currentTemplate.backgroundColor }}>
       <div className="left-panel">
-        <button className="explore-button" style={{backgroundColor: currentTemplate.headerColor}}>
+        <button className="explore-button" style={{ backgroundColor: currentTemplate.headerColor }}>
           🔍 EXPLORE TEMPLATES
         </button>
         <div className="template-buttons">
@@ -133,7 +151,7 @@ export default function ResumeBuilder() {
           ))}
         </div>
         <div>
-          {['name', 'title', 'summary', 'contact', 'education', 'skills', 'profilePhoto'].map((section) => (
+          {['name', 'title', 'summary', 'contact', 'education', 'skills', 'experience', 'certifications', 'profilePhoto'].map((section) => (
             <div key={section} className="section">
               <button onClick={() => toggleSection(section)} className="section-button">
                 {section.charAt(0).toUpperCase() + section.slice(1)}
@@ -148,7 +166,7 @@ export default function ResumeBuilder() {
                         <input
                           value={userInfo.contact[field]}
                           onChange={(e) => handleInputChange('contact', field, e.target.value)}
-                          className="input-field"
+                          className="input-fieldhim"
                         />
                       </div>
                     ))
@@ -159,36 +177,26 @@ export default function ResumeBuilder() {
                         <input
                           value={userInfo.skills[skillType]}
                           onChange={(e) => handleInputChange('skills', skillType, e.target.value)}
-                          className="input-field"
-                        />
+                          input-fieldhim/>
                       </div>
                     ))
-                  ) : section === 'education' ? (
+                  ) : ['education', 'experience', 'certifications'].includes(section) ? (
                     <div>
-                      {userInfo.education.map((edu, index) => (
-                        <div key={index} className="education-item">
-                          <input
-                            value={edu.degree}
-                            onChange={(e) => handleInputChange('education', 'degree', e.target.value, index)}
-                            placeholder="Degree"
-                            className="input-field"
-                          />
-                          <input
-                            value={edu.school}
-                            onChange={(e) => handleInputChange('education', 'school', e.target.value, index)}
-                            placeholder="School"
-                            className="input-field"
-                          />
-                          <input
-                            value={edu.date}
-                            onChange={(e) => handleInputChange('education', 'date', e.target.value, index)}
-                            placeholder="Date"
-                            className="input-field"
-                          />
-                          <button onClick={() => removeEducation(index)} className="remove-button">Remove</button>
+                      {userInfo[section].map((item, index) => (
+                        <div key={index} className={`${section}-item`}>
+                          {Object.keys(item).map((field) => (
+                            <input
+                              key={field}
+                              value={item[field]}
+                              onChange={(e) => handleInputChange(section, field, e.target.value, index)}
+                              placeholder={field.charAt(0).toUpperCase() + field.slice(1)}
+                              className="input-fieldhim"
+                            />
+                          ))}
+                          <button onClick={() => removeItem(section, index)} className="remove-button">Remove</button>
                         </div>
                       ))}
-                      <button onClick={addEducation} className="add-button">Add Education</button>
+                      <button onClick={() => addItem(section)} className="add-button">Add {section.charAt(0).toUpperCase() + section.slice(1)}</button>
                     </div>
                   ) : section === 'profilePhoto' ? (
                     <div>
@@ -196,7 +204,7 @@ export default function ResumeBuilder() {
                         type="file"
                         accept="image/*"
                         onChange={handleFileChange}
-                        className="input-field"
+                        className="input-fieldhim"
                       />
                     </div>
                   ) : (
@@ -205,7 +213,7 @@ export default function ResumeBuilder() {
                       <input
                         value={userInfo[section]}
                         onChange={(e) => handleInputChange(section, null, e.target.value)}
-                        className="input-field"
+                        className="input-fieldhim"
                       />
                     </div>
                   )}
@@ -241,12 +249,32 @@ export default function ResumeBuilder() {
           ))}
         </div>
         <div className="resume-section">
+          <h3 style={{ color: currentTemplate.headerColor, borderBottomColor: currentTemplate.headerColor }}>EXPERIENCE</h3>
+          {userInfo.experience.map((exp, index) => (
+            <div key={index}>
+              <p><strong>{exp.title}</strong> at {exp.company}</p>
+              <p>{exp.date}</p>
+              <p>{exp.description}</p>
+            </div>
+          ))}
+        </div>
+        <div className="resume-section">
           <h3 style={{ color: currentTemplate.headerColor, borderBottomColor: currentTemplate.headerColor }}>EDUCATION</h3>
           {userInfo.education.map((edu, index) => (
             <div key={index}>
               <p><strong>{edu.degree}</strong></p>
               <p>{edu.school}</p>
               <p>{edu.date}</p>
+            </div>
+          ))}
+        </div>
+        <div className="resume-section">
+          <h3 style={{ color: currentTemplate.headerColor, borderBottomColor: currentTemplate.headerColor }}>CERTIFICATIONS</h3>
+          {userInfo.certifications.map((cert, index) => (
+            <div key={index}>
+              <p><strong>{cert.name}</strong></p>
+              <p>{cert.issuer}</p>
+              <p>{cert.date}</p>
             </div>
           ))}
         </div>
@@ -260,8 +288,7 @@ export default function ResumeBuilder() {
         </div>
       </div>
       <div className="bottom-panel">
-        <button className="edit-profile">Edit Profile</button>
-        <button className="download" style={{backgroundColor: currentTemplate.headerColor}} onClick={generatePDF}>Download PDF</button>
+        <button className="download" style={{ backgroundColor: currentTemplate.headerColor }} onClick={generatePDF}>Download PDF</button>
       </div>
     </div>
   );
