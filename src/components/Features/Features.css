@@ -1,0 +1,49 @@
+
+.features-container {
+    background-color: #e7f4fb;
+    text-align: center;
+    width: 100%;
+    margin: 0;
+    padding: 5%;
+}
+
+.features_bottom_title{
+    margin-bottom: 10px;
+}
+
+.features-container h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: #09767e;
+}
+
+.features-grid_bottom {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.feature {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.feature .icon img {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 1rem;
+}
+
+.feature h3 {
+    font-size: 1.2rem;
+    margin: 1rem 0;
+    color: #09767e;
+
+}
+
+.feature p {
+    color: #0c7981;
+}
