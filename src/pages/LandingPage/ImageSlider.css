@@ -20,13 +20,6 @@
     left: 30%;
 }
 
-.nextArrow:hover {
-    font-size: 3rem;
-}
-
-.prevArrow:hover {
-    font-size: 3rem;
-}
 
 .nextArrow {
     position: absolute;

@@ -17,7 +17,7 @@ const ResumeBuilder = () => {
                 <h2 className='head_res'>Create a Professional resume in minutes. Use our Resume templates</h2>
                 <div className='job'>Getting that dream job can seem like an impossible task. We’re here to change that. Give yourself a real advantage with the best online resume maker: created by experts, improved by data, trusted by millions of professionals.
                 </div>
-                <button onClick={handleClick}>Get Started</button>
+                <button onClick={handleClick} id="get_start">Get Started</button>
             </div>
 
             <div className="image-section">
