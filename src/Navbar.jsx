@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './Navbar.css';
-import logo from './ResumeCraftLogo.png';
+import logo from './assets/image/ResumeCraftLogo.png';
+
 import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
@@ -23,6 +24,7 @@ const Navbar = () => {
 
             <div className={`navbar-center ${isMenuOpen ? 'open' : ''}`}>
                 <ul className="nav-links">
+
                     <li>
                         <a href="/auth">Login</a>
                     </li>

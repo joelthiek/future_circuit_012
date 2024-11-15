@@ -6,7 +6,7 @@ export const IMAGES = [
     },
     {
         id: 2,
-        src: "https://resumebuild.com/wp-content/uploads/2023/07/cv-distinct-5.webp",
+        src: "https://marketplace.canva.com/EAFRuCp3DcY/1/0/566w/canva-black-white-minimalist-cv-resume-swrqd3VWKmc.jpg",
         alt: "Placeholder image",
     },
     {
@@ -26,7 +26,7 @@ export const IMAGES = [
     },
     {
         id: 6,
-        src: "/images/image.png",
+        src: "https://marketplace.canva.com/EAFszEvkM50/1/0/1131w/canva-simple-professional-cv-resume-J74DKa9D3nk.jpg",
         alt: "Placeholder image",
     },
 ];

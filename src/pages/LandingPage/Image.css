@@ -9,3 +9,18 @@
 .container {
     padding: 2.5rem 0;
 }
+
+#template>div>h2 {
+    color: purple;
+    font-size: xx-large;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+#template {
+    display: flex;
+    flex-direction: column;
+}
+
+#template_id1 {
+    padding: 20px;
+}
