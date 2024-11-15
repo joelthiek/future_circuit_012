@@ -1,4 +1,4 @@
-.resume-builder {
+.hima-rb-resume-builder {
   display: flex;
   flex-wrap: wrap;
   padding: 20px;
@@ -6,7 +6,7 @@
   box-sizing: border-box;
 }
 
-.left-panel {
+.hima-rb-left-panel {
   flex: 1;
   min-width: 300px;
   padding-right: 20px;
@@ -15,7 +15,7 @@
   box-sizing: border-box;
 }
 
-.right-panel {
+.hima-rb-right-panel {
   flex: 2;
   min-width: 400px;
   background-color: white;
@@ -26,7 +26,7 @@
   box-sizing: border-box;
 }
 
-.explore-button {
+.hima-rb-explore-button {
   width: 100%;
   padding: 10px;
   color: white;
@@ -36,11 +36,11 @@
   margin-bottom: 20px;
 }
 
-.template-buttons {
+.hima-rb-template-buttons {
   margin-bottom: 20px;
 }
 
-.template-button {
+.hima-rb-template-button {
   margin-right: 10px;
   margin-bottom: 10px;
   padding: 5px 10px;
@@ -49,11 +49,11 @@
   cursor: pointer;
 }
 
-.section {
+.hima-rb-section {
   margin-bottom: 10px;
 }
 
-.section-button {
+.hima-rb-section-button {
   width: 100%;
   padding: 10px;
   text-align: left;
@@ -63,7 +63,7 @@
   cursor: pointer;
 }
 
-.section-content {
+.hima-rb-section-content {
   padding: 10px;
   background-color: #f9f9f9;
   border: 1px solid #ddd;
@@ -71,7 +71,7 @@
   border-radius: 0 0 5px 5px;
 }
 
-.input-fieldhima {
+.hima-rb-input-field {
   width: 100%;
   margin-bottom: 5px;
   padding: 5px;
@@ -79,13 +79,13 @@
   border-radius: 3px;
 }
 
-.resume-header {
+.hima-rb-resume-header {
   display: flex;
   align-items: center;
   margin-bottom: 20px;
 }
 
-.profile-pic {
+.hima-rb-profile-pic {
   width: 150px;
   height: 150px;
   border-radius: 50%;
@@ -93,32 +93,32 @@
   object-fit: cover;
 }
 
-.name-title h1 {
+.hima-rb-name-title h1 {
   margin: 0;
 }
 
-.name-title h2 {
+.hima-rb-name-title h2 {
   margin: 5px 0 0;
   color: #666;
 }
 
-.resume-section {
+.hima-rb-resume-section {
   margin-bottom: 20px;
 }
 
-.resume-section h3 {
+.hima-rb-resume-section h3 {
   border-bottom: 2px solid;
   padding-bottom: 5px;
 }
 
-.bottom-panel {
+.hima-rb-bottom-panel {
   width: 100%;
   display: flex;
   justify-content: space-between;
   margin-top: 20px;
 }
 
-.download {
+.hima-rb-download {
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
@@ -126,16 +126,16 @@
   color: white;
 }
 
-.education-item,
-.experience-item,
-.certifications-item {
+.hima-rb-education-item,
+.hima-rb-experience-item,
+.hima-rb-certifications-item {
   margin-bottom: 10px;
   padding: 10px;
   background-color: #f0f0f0;
   border-radius: 5px;
 }
 
-.remove-button {
+.hima-rb-remove-button {
   background-color: #ff4d4d;
   color: white;
   border: none;
@@ -145,7 +145,7 @@
   margin-top: 5px;
 }
 
-.add-button {
+.hima-rb-add-button {
   background-color: #4CAF50;
   color: white;
   border: none;
@@ -156,31 +156,31 @@
 }
 
 /* Ensure proper scrolling for both panels */
-.left-panel,
-.right-panel {
+.hima-rb-left-panel,
+.hima-rb-right-panel {
   -webkit-overflow-scrolling: touch; /* For smoother scrolling on iOS devices */
   scrollbar-width: thin; /* For Firefox */
   scrollbar-color: #888 #f1f1f1; /* For Firefox */
 }
 
 /* Scrollbar styling for WebKit browsers */
-.left-panel::-webkit-scrollbar,
-.right-panel::-webkit-scrollbar {
+.hima-rb-left-panel::-webkit-scrollbar,
+.hima-rb-right-panel::-webkit-scrollbar {
   width: 8px;
 }
 
-.left-panel::-webkit-scrollbar-track,
-.right-panel::-webkit-scrollbar-track {
+.hima-rb-left-panel::-webkit-scrollbar-track,
+.hima-rb-right-panel::-webkit-scrollbar-track {
   background: #f1f1f1;
 }
 
-.left-panel::-webkit-scrollbar-thumb,
-.right-panel::-webkit-scrollbar-thumb {
+.hima-rb-left-panel::-webkit-scrollbar-thumb,
+.hima-rb-right-panel::-webkit-scrollbar-thumb {
   background: #888;
   border-radius: 4px;
 }
 
-.left-panel::-webkit-scrollbar-thumb:hover,
-.right-panel::-webkit-scrollbar-thumb:hover {
+.hima-rb-left-panel::-webkit-scrollbar-thumb:hover,
+.hima-rb-right-panel::-webkit-scrollbar-thumb:hover {
   background: #555;
 }

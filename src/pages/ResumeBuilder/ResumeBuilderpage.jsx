@@ -138,27 +138,27 @@ export default function ResumeBuilder() {
   };
 
   return (
-    <div className="resume-builder" style={{ fontFamily: currentTemplate.fontFamily, backgroundColor: currentTemplate.backgroundColor }}>
-      <div className="left-panel">
-        <button className="explore-button" style={{ backgroundColor: currentTemplate.headerColor }}>
+    <div className="hima-rb-resume-builder" style={{ fontFamily: currentTemplate.fontFamily, backgroundColor: currentTemplate.backgroundColor }}>
+      <div className="hima-rb-left-panel">
+        <button className="hima-rb-explore-button" style={{ backgroundColor: currentTemplate.headerColor }}>
           🔍 EXPLORE TEMPLATES
         </button>
-        <div className="template-buttons">
+        <div className="hima-rb-template-buttons">
           {Object.keys(templates).map((templateName) => (
-            <button key={templateName} onClick={() => applyTemplate(templateName)} className="template-button">
+            <button key={templateName} onClick={() => applyTemplate(templateName)} className="hima-rb-template-button">
               {templateName}
             </button>
           ))}
         </div>
         <div>
           {['name', 'title', 'summary', 'contact', 'education', 'skills', 'experience', 'certifications', 'profilePhoto'].map((section) => (
-            <div key={section} className="section">
-              <button onClick={() => toggleSection(section)} className="section-button">
+            <div key={section} className="hima-rb-section">
+              <button onClick={() => toggleSection(section)} className="hima-rb-section-button">
                 {section.charAt(0).toUpperCase() + section.slice(1)}
                 <span style={{ float: 'right', transform: activeSection === section ? 'rotate(180deg)' : 'none' }}>▼</span>
               </button>
               {activeSection === section && (
-                <div className="section-content">
+                <div className="hima-rb-section-content">
                   {section === 'contact' ? (
                     Object.keys(userInfo.contact).map((field) => (
                       <div key={field}>
@@ -166,7 +166,7 @@ export default function ResumeBuilder() {
                         <input
                           value={userInfo.contact[field]}
                           onChange={(e) => handleInputChange('contact', field, e.target.value)}
-                          className="input-fieldhim"
+                          className="hima-rb-input-field"
                         />
                       </div>
                     ))
@@ -177,26 +177,27 @@ export default function ResumeBuilder() {
                         <input
                           value={userInfo.skills[skillType]}
                           onChange={(e) => handleInputChange('skills', skillType, e.target.value)}
-                          input-fieldhim/>
+                          className="hima-rb-input-field"
+                        />
                       </div>
                     ))
                   ) : ['education', 'experience', 'certifications'].includes(section) ? (
                     <div>
                       {userInfo[section].map((item, index) => (
-                        <div key={index} className={`${section}-item`}>
+                        <div key={index} className={`hima-rb-${section}-item`}>
                           {Object.keys(item).map((field) => (
                             <input
                               key={field}
                               value={item[field]}
                               onChange={(e) => handleInputChange(section, field, e.target.value, index)}
                               placeholder={field.charAt(0).toUpperCase() + field.slice(1)}
-                              className="input-fieldhim"
+                              className="hima-rb-input-field"
                             />
                           ))}
-                          <button onClick={() => removeItem(section, index)} className="remove-button">Remove</button>
+                          <button onClick={() => removeItem(section, index)} className="hima-rb-remove-button">Remove</button>
                         </div>
                       ))}
-                      <button onClick={() => addItem(section)} className="add-button">Add {section.charAt(0).toUpperCase() + section.slice(1)}</button>
+                      <button onClick={() => addItem(section)} className="hima-rb-add-button">Add {section.charAt(0).toUpperCase() + section.slice(1)}</button>
                     </div>
                   ) : section === 'profilePhoto' ? (
                     <div>
@@ -204,7 +205,7 @@ export default function ResumeBuilder() {
                         type="file"
                         accept="image/*"
                         onChange={handleFileChange}
-                        className="input-fieldhim"
+                        className="hima-rb-input-field"
                       />
                     </div>
                   ) : (
@@ -213,7 +214,7 @@ export default function ResumeBuilder() {
                       <input
                         value={userInfo[section]}
                         onChange={(e) => handleInputChange(section, null, e.target.value)}
-                        className="input-fieldhim"
+                        className="hima-rb-input-field"
                       />
                     </div>
                   )}
@@ -223,19 +224,19 @@ export default function ResumeBuilder() {
           ))}
         </div>
       </div>
-      <div className="right-panel" ref={resumeRef}>
-        <div className="resume-header">
-          <img src={userInfo.profilePhoto} alt="Profile" className="profile-pic" />
-          <div className="name-title">
+      <div className="hima-rb-right-panel" ref={resumeRef}>
+        <div className="hima-rb-resume-header">
+          <img src={userInfo.profilePhoto} alt="Profile" className="hima-rb-profile-pic" />
+          <div className="hima-rb-name-title">
             <h1 style={{ color: currentTemplate.headerColor }}>{userInfo.name}</h1>
             <h2>{userInfo.title}</h2>
           </div>
         </div>
-        <div className="resume-section">
+        <div className="hima-rb-resume-section">
           <h3 style={{ color: currentTemplate.headerColor, borderBottomColor: currentTemplate.headerColor }}>PROFESSIONAL SUMMARY</h3>
           <p>{userInfo.summary}</p>
         </div>
-        <div className="resume-section">
+        <div className="hima-rb-resume-section">
           <h3 style={{ color: currentTemplate.headerColor, borderBottomColor: currentTemplate.headerColor }}>CONTACT</h3>
           {Object.entries(userInfo.contact).map(([key, value]) => (
             <p key={key}>
@@ -248,7 +249,7 @@ export default function ResumeBuilder() {
             </p>
           ))}
         </div>
-        <div className="resume-section">
+        <div className="hima-rb-resume-section">
           <h3 style={{ color: currentTemplate.headerColor, borderBottomColor: currentTemplate.headerColor }}>EXPERIENCE</h3>
           {userInfo.experience.map((exp, index) => (
             <div key={index}>
@@ -258,7 +259,7 @@ export default function ResumeBuilder() {
             </div>
           ))}
         </div>
-        <div className="resume-section">
+        <div className="hima-rb-resume-section">
           <h3 style={{ color: currentTemplate.headerColor, borderBottomColor: currentTemplate.headerColor }}>EDUCATION</h3>
           {userInfo.education.map((edu, index) => (
             <div key={index}>
@@ -268,7 +269,7 @@ export default function ResumeBuilder() {
             </div>
           ))}
         </div>
-        <div className="resume-section">
+        <div className="hima-rb-resume-section">
           <h3 style={{ color: currentTemplate.headerColor, borderBottomColor: currentTemplate.headerColor }}>CERTIFICATIONS</h3>
           {userInfo.certifications.map((cert, index) => (
             <div key={index}>
@@ -278,17 +279,17 @@ export default function ResumeBuilder() {
             </div>
           ))}
         </div>
-        <div className="resume-section">
+        <div className="hima-rb-resume-section">
           <h3 style={{ color: currentTemplate.headerColor, borderBottomColor: currentTemplate.headerColor }}>TECHNICAL SKILLS</h3>
           <p>{userInfo.skills.technical}</p>
         </div>
-        <div className="resume-section">
+        <div className="hima-rb-resume-section">
           <h3 style={{ color: currentTemplate.headerColor, borderBottomColor: currentTemplate.headerColor }}>SOFT SKILLS</h3>
           <p>{userInfo.skills.soft}</p>
         </div>
       </div>
-      <div className="bottom-panel">
-        <button className="download" style={{ backgroundColor: currentTemplate.headerColor }} onClick={generatePDF}>Download PDF</button>
+      <div className="hima-rb-bottom-panel">
+        <button className="hima-rb-download" style={{ backgroundColor: currentTemplate.headerColor }} onClick={generatePDF}>Download PDF</button>
       </div>
     </div>
   );
