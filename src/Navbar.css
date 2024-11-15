@@ -1,19 +1,14 @@
-/* Navbar styles */
+/* Base styles (default for large screens) */
 .navbar {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0.5rem 2rem;
+    padding: 0.9rem 2rem;
     background-color: #333;
     color: #fff;
-}
-
-.navbar {
     position: sticky;
     top: 0;
-    overflow: hidden;
-
-
+    z-index: 1;
 }
 
 .navbar-left {
@@ -22,8 +17,7 @@
 }
 
 .navbar-brand {
-    width: 30px;
-    height: 30px;
+    width: 170px;
     cursor: pointer;
 }
 
@@ -39,15 +33,19 @@
 
 .nav-links a {
     text-decoration: none;
-    height: 50px;
-
+    color: orange;
+    border: 1px solid orange;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .nav-links a:hover {
-    text-decoration: none;
+    background-color: orange;
+    color: #fff;
 }
 
-/* Hamburger icon */
+/* Hamburger icon (hidden by default) */
 .navbar-hamburger {
     display: none;
     cursor: pointer;
@@ -58,7 +56,7 @@
     color: #fff;
 }
 
-/* Responsive styles */
+/* Responsive styles for medium screens (tablet, 768px and below) */
 @media (max-width: 768px) {
     .navbar-center {
         display: none;
@@ -69,16 +67,16 @@
         background-color: #333;
         padding: 1rem;
         border-radius: 5px;
-    }
-
-    .nav-links {
-        flex-direction: column;
-        /* Make links stack vertically */
-        gap: 1.5rem;
+        width: 200px;
     }
 
     .navbar-center.open {
         display: flex;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        gap: 1.5rem;
     }
 
     .navbar-hamburger {
@@ -86,17 +84,27 @@
     }
 }
 
+/* Responsive styles for small screens (mobile, 480px and below) */
+@media (max-width: 480px) {
+    .navbar {
+        padding: 0.5rem 1rem;
+    }
 
-.navbar-brand {
-    position: relative;
-    width: 170px;
-    left: 15px;
-    background-color: #333;
-    cursor: pointer;
-}
+    .navbar-brand {
+        width: 120px;
+    }
 
-a {
-    background-color: white;
-    border: 1px solid orange;
-    color: orange;
+    .navbar-center {
+        right: 10px;
+        width: 180px;
+    }
+
+    .nav-links a {
+        padding: 0.5rem 0.8rem;
+        font-size: 0.9rem;
+    }
+
+    .hamburger-icon {
+        font-size: 1.2rem;
+    }
 }

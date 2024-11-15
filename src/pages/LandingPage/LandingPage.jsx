@@ -1,8 +1,7 @@
 import React from 'react'
-import Navbar from './Navbar';
 import Home from './Home';
 import ResumeBuilder from './ResumeBuilder';
-import AutoPlay from './AutoPlay';
+import AutoPlay from './Steps';
 import FeaturesGrid from './FeatureGrid';
 import ResumeGuide from './ResumeGuide';
 import Image from './Image';
@@ -10,14 +9,15 @@ import Image from './Image';
 const LandingPage = () => {
   return (
     <div>
-      Landing Page
-      <Navbar />
       <ResumeBuilder />
       <AutoPlay />
-      <Home />
+
+      {/* <Home /> */}
+
       <FeaturesGrid />
-      <ResumeGuide />
       <Image />
+
+      {/* <ResumeGuide /> */}
       {/* <Corosel /> */}
     </div>
   )

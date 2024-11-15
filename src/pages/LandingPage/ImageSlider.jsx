@@ -67,6 +67,8 @@ const ImageSlider = ({ images, slidesToShow = 3 }) => {
                 <div className="slideWrapper">
                     {image.code ? image.code : <img src={image.src} alt={image.alt} className="resume-image" />}
                 </div>
+
+
             </div>
         );
     });
