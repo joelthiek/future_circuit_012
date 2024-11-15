@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './Navbar.css';
 import logo from './assets/image/ResumeCraftLogo.png';
+import { Link } from 'react-router-dom';
 
 import { useNavigate } from 'react-router-dom';
 
@@ -26,10 +27,12 @@ const Navbar = () => {
                 <ul className="nav-links">
 
                     <li>
-                        <a href="/auth">Login</a>
+                        {/* <a href="/auth">Login</a> */}
+                        <Link to="/auth">Login</Link>
                     </li>
                     <li>
-                        <a href="/register">SignUp</a>
+                        {/* <a href="/register">SignUp</a> */}
+                        <Link to="/register">Signup</Link>
                     </li>
                 </ul>
             </div>
