@@ -1,6 +1,6 @@
 import React from "react";
 import './Home.css';
-import girlImage from './ResumeCraftGirl.jpg'
+//import girlImage from './ResumeCraftGirl.jpg'
 const Home = () => {
     return (
         <div className="career-page">

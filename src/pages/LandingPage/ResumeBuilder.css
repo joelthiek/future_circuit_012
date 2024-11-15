@@ -1,11 +1,11 @@
 .resume-builder {
     display: flex;
     align-items: center;
-    padding: 20px;
-    max-width: 1200px;
-    margin: auto;
+    padding: 50px;
+    /* max-width: 1200px; */
     text-align: left;
-    gap: 30px;
+    gap: 10%;
+    background: linear-gradient(rgb(231, 238, 250) 50%, rgb(255, 255, 255) 100%)
 }
 
 .text-section {
@@ -53,6 +53,7 @@
 .image-section {
     max-width: 50%;
     text-align: center;
+    padding: 40px;
 }
 
 .image-section img {
@@ -73,5 +74,5 @@
 }
 
 i {
-    color: green
+    color: green;
 }

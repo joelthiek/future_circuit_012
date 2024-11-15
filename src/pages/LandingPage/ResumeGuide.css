@@ -1,0 +1,51 @@
+.resume-guide-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 40px;
+}
+
+.resume-image img {
+    width: 400px;
+    height: 250px;
+}
+
+
+.resume-steps {
+    max-width: 400px;
+}
+
+.resume-steps h2 {
+    font-size: 1.8em;
+    margin: 0;
+}
+
+.resume-steps p {
+    font-size: 1.1em;
+    font-style: italic;
+    color: #666;
+}
+
+.resume-steps ul {
+    list-style: none;
+    padding: 0;
+}
+
+.resume-steps li {
+    margin: 10px 0;
+    font-size: 1.1em;
+}
+
+.step-number {
+    background-color: #27ae60;
+    color: #fff;
+    border-radius: 50%;
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    text-align: center;
+    margin-right: 10px;
+}
