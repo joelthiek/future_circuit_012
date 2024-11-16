@@ -6,6 +6,8 @@ import { useNavigate } from 'react-router-dom';
 import ResetPassword from './resetPassword';
 import googleImage from '../../assets/image/google_image.png';
 import LoginImage from '../../assets/image/Login_image.jpg';
+import { GoogleAuthProvider } from 'firebase/auth';
+const googleProvider = new GoogleAuthProvider();
 
 const SignInPage = () => {
   const [email, setEmail] = useState('');
@@ -16,6 +18,7 @@ const SignInPage = () => {
   const handleLogIn = async (e) => {
     e.preventDefault();
     try {
+      localStorage.setItem("userEmail", email);
       await logIn(email, password);
       alert('Logged in successfully');
       navigate('/create-resume');
@@ -26,6 +29,7 @@ const SignInPage = () => {
 
   const handleGoogleSignIn = async () => {
     try {
+      localStorage.setItem("userEmail", googleProvider.providerId);
       await signInWithGoogle();
       alert('Logged in with Google successfully');
       navigate('/create-resume');
