@@ -1,7 +1,6 @@
 import { createRoot } from 'react-dom/client';
 import './index.css';
 import App from './App.jsx';
-import Navbar from './components/Navbar/Navbar.jsx';
 import Footer from './components/Footer/Footer.jsx';
 import { BrowserRouter as Router, useLocation } from 'react-router-dom';
 
@@ -13,7 +12,6 @@ function Layout() {
 
   return (
     <>
-      <Navbar />
       <App />
       {/* Conditionally render Footer */}
       {!hideFooterPaths.includes(location.pathname) && <Footer />}

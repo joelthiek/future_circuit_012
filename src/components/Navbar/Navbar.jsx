@@ -8,7 +8,11 @@ import { useNavigate } from 'react-router-dom';
 const Navbar = () => {
     const navigate = useNavigate();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const details = localStorage.getItem("userEmail");
 
+    const handleClick = () => {
+        localStorage.setItem("userEmail", "");
+    }
     const handlePath = () => {
         navigate('/');
     };
@@ -24,17 +28,25 @@ const Navbar = () => {
             </div>
 
             <div className={`navbar-center ${isMenuOpen ? 'open' : ''}`}>
-                <ul className="nav-links">
+                {details ? <ul className="nav-links">
 
                     <li>
-                        {/* <a href="/auth">Login</a> */}
-                        <Link to="/auth">Login</Link>
+                        <Link to="/auth" onClick={handleClick}>Logout</Link>
                     </li>
-                    <li>
-                        {/* <a href="/register">SignUp</a> */}
-                        <Link to="/register">Signup</Link>
-                    </li>
-                </ul>
+
+                </ul> :
+                    <ul className="nav-links">
+
+                        <li>
+                            {/* <a href="/auth">Login</a> */}
+                            <Link to="/auth">Login</Link>
+                        </li>
+                        <li>
+                            {/* <a href="/register">SignUp</a> */}
+                            <Link to="/register">Signup</Link>
+                        </li>
+                    </ul>
+                }
             </div>
 
             <div className="navbar-hamburger" onClick={toggleMenu}>
