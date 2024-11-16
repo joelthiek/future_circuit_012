@@ -17,6 +17,10 @@
     color: white;
 }
 
+.hero-text h1 {
+    color: black;
+}
+
 .hero-text button {
     border: none;
     outline: 0;
