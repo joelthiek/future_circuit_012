@@ -6,7 +6,6 @@ import FAQ from "../../components/Faq/FAQ"
 import Image from "./Image"
 import Features from "../../components/Features/Features"
 import VideoSection from "../../components/VideoSection/VideoSection"
-// import Corosel from './Slider';
 const LandingPage = () => {
   return (
     <div>

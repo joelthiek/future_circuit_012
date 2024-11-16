@@ -8,7 +8,6 @@
     background: linear-gradient(rgb(231, 238, 250) 50%, rgb(255, 255, 255) 100%);
 }
 
-/* Text Section Styles */
 .text-section {
     max-width: 30%;
     margin-left: 15%;
@@ -38,6 +37,9 @@
     max-width: 50%;
     text-align: center;
     padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    animation: float 3s ease-in-out infinite;
 }
 
 .image-section img {
@@ -138,4 +140,9 @@
     border-radius: 4px;
     cursor: pointer;
 
+
+}
+
+#get_start:hover {
+    opacity: 0.8;
 }
