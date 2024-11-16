@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { resetPassword } from '../../firebase/authService';
 
-const ResetPassword = () => {
+const ResetPassword = ({ onSuccess }) => {
     const [email, setEmail] = useState('');
 
     const handleResetPassword = async (e) => {
@@ -10,6 +10,7 @@ const ResetPassword = () => {
         try {
             await resetPassword(email);
             alert('Password reset email sent!');
+            onSuccess();
         } catch (error) {
             alert(error.message);
         }

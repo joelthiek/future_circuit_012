@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { logIn, signInWithGoogle } from '../../firebase/authService';
 import './SignInPage.css';
 import Modal from './modal';
+import { useNavigate } from 'react-router-dom';
 import ResetPassword from './resetPassword';
 import googleImage from '../../assets/image/google_image.png';
 import LoginImage from '../../assets/image/Login_image.jpg';
@@ -9,6 +10,7 @@ import LoginImage from '../../assets/image/Login_image.jpg';
 const SignInPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleLogIn = async (e) => {
@@ -16,6 +18,7 @@ const SignInPage = () => {
     try {
       await logIn(email, password);
       alert('Logged in successfully');
+      navigate('/create-resume');
     } catch (error) {
       alert(error.message);
     }
@@ -25,6 +28,7 @@ const SignInPage = () => {
     try {
       await signInWithGoogle();
       alert('Logged in with Google successfully');
+      navigate('/create-resume');
     } catch (error) {
       alert(error.message);
     }
@@ -76,7 +80,7 @@ const SignInPage = () => {
           </button>
         </div>
         <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-          <ResetPassword />
+          <ResetPassword onSuccess={() => setIsModalOpen(false)} />
         </Modal>
       </div>
       <div className="login-image">
