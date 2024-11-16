@@ -87,7 +87,7 @@ const SignInPage = () => {
           <ResetPassword onSuccess={() => setIsModalOpen(false)} />
         </Modal>
       </div>
-      <div className="login-image">
+      <div className="login-image" width={100} height={100}>
         <img src={LoginImage} alt="Login Image" />
       </div>
     </div>

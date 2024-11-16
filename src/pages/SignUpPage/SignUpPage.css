@@ -1,11 +1,13 @@
 .signup-container {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     align-items: center;
-    gap: 100px;
-    height: 85vh;
+    gap: 10rem;
+    padding: 1rem;
+    height: auto;
     /* width: 10%; */
-    width: 85%;
+    width: 100%;
     max-width: 1200px;
     margin: 0 auto;
     /* border: 2px solid #f5f5f5; */
@@ -20,17 +22,18 @@ button[disabled] {
 
 
 .signup-form {
-    width: 50%;
+    width: 100%;
     max-width: 400px;
-    padding: 2rem;
-    /* background-color: #fff; */
-    /* border-radius: 8px; */
+    padding: 1.5rem;
+    background-color: #fff;
+    border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .signup-form h2 {
     font-size: 2rem;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
     color: #333;
 }
 
@@ -38,9 +41,10 @@ button[disabled] {
     display: flex;
     align-items: center;
     margin-bottom: 1rem;
-    padding: 0.5rem;
+    padding: 0.75rem;
     border: 1px solid #ddd;
     border-radius: 4px;
+    background-color: #f9f9f9;
 }
 
 .input-field span {
@@ -53,6 +57,7 @@ button[disabled] {
     border: none;
     outline: none;
     font-size: 1rem;
+    background: transparent;
 }
 
 .checkbox-field {
@@ -63,10 +68,14 @@ button[disabled] {
     margin-bottom: 1rem;
 }
 
+.checkbox-field input {
+    margin-right: 0.5rem;
+}
+
 .checkbox-field a {
     color: #1e90ff;
     text-decoration: none;
-    margin-left: 0.25rem;
+    /* margin-left: 0.25rem; */
 }
 
 .submitButton {
@@ -94,7 +103,7 @@ button[disabled] {
 }
 
 .already-member a {
-    color: #666;
+    color: #1e90ff;
     text-decoration: none;
 }
 
@@ -104,9 +113,9 @@ button[disabled] {
 
 }
 
-.signup-container {
+/* .signup-container {
     flex-direction: row;
-}
+} */
 
 .signup-image img {
     max-width: 100%;
@@ -119,16 +128,38 @@ button[disabled] {
     .signup-container {
         /* max-width: 900px; */
         /* width: 100%; */
-        padding: 1rem;
+        /* padding: 1rem; */
+        flex-wrap: nowrap;
+        flex-direction: row;
     }
 
     .signup-form {
         flex: 1;
+        padding: 2rem;
     }
 
     .signup-image {
         flex: 1;
         display: block;
-        padding: 1rem;
+        max-width: 500px;
+    }
+
+    .signup-image img {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+@media (min-width: 1024px) {
+    .signup-container {
+        padding: 2rem;
+    }
+
+    .signup-form {
+        max-width: 450px;
+    }
+
+    .signup-image img {
+        max-height: 500px;
     }
 }
