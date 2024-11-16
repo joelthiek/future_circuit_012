@@ -1,9 +1,7 @@
 import React from "react"
-import Home from "./Home"
 import ResumeBuilder from "./ResumeBuilder"
 import AutoPlay from "./Steps"
 import FeaturesGrid from "./FeatureGrid"
-import ResumeGuide from "./ResumeGuide"
 import FAQ from "../../components/Faq/FAQ"
 import Image from "./Image"
 import Features from "../../components/Features/Features"
@@ -16,8 +14,8 @@ const LandingPage = () => {
       <AutoPlay />
       <FeaturesGrid />
       <Image />
-      <Features/>
-      <VideoSection/>
+      <Features />
+      <VideoSection />
       <FAQ />
     </div>
   )
