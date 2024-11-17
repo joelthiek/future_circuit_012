@@ -67,6 +67,14 @@ export default function ResumeBuilder() {
         date: 'September 2023',
       },
     ],
+    projects: [
+      {
+        name: 'Personal Portfolio Website',
+        description: 'Developed a responsive personal portfolio website using React and Tailwind CSS.',
+        technologies: 'React, Tailwind CSS, Netlify',
+        link: 'https://myportfolio.com'
+      }
+    ],
   });
 
   const [currentTemplate, setCurrentTemplate] = useState(templates.modern);
@@ -78,7 +86,7 @@ export default function ResumeBuilder() {
 
   const handleInputChange = (section, field, value, index = null) => {
     setUserInfo(prevInfo => {
-      if (['education', 'experience', 'certifications'].includes(section) && index !== null) {
+      if (['education', 'experience', 'certifications', 'projects'].includes(section) && index !== null) {
         const newArray = [...prevInfo[section]];
         newArray[index] = { ...newArray[index], [field]: value };
         return { ...prevInfo, [section]: newArray };
@@ -93,9 +101,12 @@ export default function ResumeBuilder() {
   const addItem = (section) => {
     setUserInfo(prevInfo => ({
       ...prevInfo,
-      [section]: [...prevInfo[section], section === 'experience'
-        ? { title: '', company: '', date: '', description: '' }
-        : { name: '', issuer: '', date: '' }
+      [section]: [...prevInfo[section], 
+        section === 'experience'
+          ? { title: '', company: '', date: '', description: '' }
+          : section === 'projects'
+          ? { name: '', description: '', technologies: '', link: '' }
+          : { name: '', issuer: '', date: '' }
       ]
     }));
   };
@@ -124,7 +135,15 @@ export default function ResumeBuilder() {
 
   const generatePDF = async () => {
     const content = resumeRef.current;
-    const canvas = await html2canvas(content);
+    const canvas = await html2canvas(content, {
+      scrollY: -window.scrollY,
+      scale: 2, // Increase scale for better quality
+      useCORS: true, // This might help with loading images
+      onclone: (clonedDoc) => {
+        // Force the cloned document to have a height that fits all content
+        clonedDoc.querySelector('.hima-rb-right-panel').style.height = 'auto';
+      }
+    });
     const imgData = canvas.toDataURL('image/png');
     const pdf = new jsPDF('p', 'mm', 'a4');
     const pdfWidth = pdf.internal.pageSize.getWidth();
@@ -134,167 +153,188 @@ export default function ResumeBuilder() {
     const ratio = Math.min(pdfWidth / imgWidth, pdfHeight / imgHeight);
     const imgX = (pdfWidth - imgWidth * ratio) / 2;
     const imgY = 30;
-    pdf.addImage(imgData, 'PNG', imgX, imgY, imgWidth * ratio, imgHeight * ratio);
+
+    // Calculate the number of pages needed
+    const pageHeight = pdf.internal.pageSize.getHeight();
+    const imgPages = Math.ceil(imgHeight * ratio / pageHeight);
+
+    // Add image across multiple pages if necessary
+    for (let i = 0; i < imgPages; i++) {
+      if (i > 0) {
+        pdf.addPage();
+      }
+      const position = -i * pageHeight;
+      pdf.addImage(imgData, 'PNG', imgX, position + imgY, imgWidth * ratio, imgHeight * ratio);
+    }
+
     pdf.save('resume.pdf');
   };
 
   return (
-    <>
-      <Navbar />
-      <div className="hima-rb-resume-builder" style={{ fontFamily: currentTemplate.fontFamily, backgroundColor: currentTemplate.backgroundColor }}>
-        <div className="hima-rb-left-panel">
-          <button className="hima-rb-explore-button" style={{ backgroundColor: currentTemplate.headerColor }}>
-            🔍 EXPLORE TEMPLATES
-          </button>
-          <div className="hima-rb-template-buttons">
-            {Object.keys(templates).map((templateName) => (
-              <button key={templateName} onClick={() => applyTemplate(templateName)} className="hima-rb-template-button">
-                {templateName}
+    <div className="hima-rb-resume-builder" style={{ fontFamily: currentTemplate.fontFamily, backgroundColor: currentTemplate.backgroundColor }}>
+      <div className="hima-rb-left-panel">
+        <button className="hima-rb-explore-button" style={{ backgroundColor: currentTemplate.headerColor }}>
+          🔍 EXPLORE TEMPLATES
+        </button>
+        <div className="hima-rb-template-buttons">
+          {Object.keys(templates).map((templateName) => (
+            <button key={templateName} onClick={() => applyTemplate(templateName)} className="hima-rb-template-button">
+              {templateName}
+            </button>
+          ))}
+        </div>
+        <div>
+          {['name', 'title', 'summary', 'contact', 'education', 'skills', 'experience', 'projects', 'certifications', 'profilePhoto'].map((section) => (
+            <div key={section} className="hima-rb-section">
+              <button onClick={() => toggleSection(section)} className="hima-rb-section-button">
+                {section.charAt(0).toUpperCase() + section.slice(1)}
+                <span style={{ float: 'right', transform: activeSection === section ? 'rotate(180deg)' : 'none' }}>▼</span>
               </button>
-            ))}
-          </div>
-          <div>
-            {['name', 'title', 'summary', 'contact', 'education', 'skills', 'experience', 'certifications', 'profilePhoto'].map((section) => (
-              <div key={section} className="hima-rb-section">
-                <button onClick={() => toggleSection(section)} className="hima-rb-section-button">
-                  {section.charAt(0).toUpperCase() + section.slice(1)}
-                  <span style={{ float: 'right', transform: activeSection === section ? 'rotate(180deg)' : 'none' }}>▼</span>
-                </button>
-                {activeSection === section && (
-                  <div className="hima-rb-section-content">
-                    {section === 'contact' ? (
-                      Object.keys(userInfo.contact).map((field) => (
-                        <div key={field}>
-                          <label>{field}: </label>
-                          <input
-                            value={userInfo.contact[field]}
-                            onChange={(e) => handleInputChange('contact', field, e.target.value)}
-                            className="hima-rb-input-field"
-                          />
-                        </div>
-                      ))
-                    ) : section === 'skills' ? (
-                      Object.keys(userInfo.skills).map((skillType) => (
-                        <div key={skillType}>
-                          <label>{skillType}: </label>
-                          <input
-                            value={userInfo.skills[skillType]}
-                            onChange={(e) => handleInputChange('skills', skillType, e.target.value)}
-                            className="hima-rb-input-field"
-                          />
-                        </div>
-                      ))
-                    ) : ['education', 'experience', 'certifications'].includes(section) ? (
-                      <div>
-                        {userInfo[section].map((item, index) => (
-                          <div key={index} className={`hima-rb-${section}-item`}>
-                            {Object.keys(item).map((field) => (
-                              <input
-                                key={field}
-                                value={item[field]}
-                                onChange={(e) => handleInputChange(section, field, e.target.value, index)}
-                                placeholder={field.charAt(0).toUpperCase() + field.slice(1)}
-                                className="hima-rb-input-field"
-                              />
-                            ))}
-                            <button onClick={() => removeItem(section, index)} className="hima-rb-remove-button">Remove</button>
-                          </div>
-                        ))}
-                        <button onClick={() => addItem(section)} className="hima-rb-add-button">Add {section.charAt(0).toUpperCase() + section.slice(1)}</button>
-                      </div>
-                    ) : section === 'profilePhoto' ? (
-                      <div>
+              {activeSection === section && (
+                <div className="hima-rb-section-content">
+                  {section === 'contact' ? (
+                    Object.keys(userInfo.contact).map((field) => (
+                      <div key={field}>
+                        <label>{field}: </label>
                         <input
-                          type="file"
-                          accept="image/*"
-                          onChange={handleFileChange}
+                          value={userInfo.contact[field]}
+                          onChange={(e) => handleInputChange('contact', field, e.target.value)}
                           className="hima-rb-input-field"
                         />
                       </div>
-                    ) : (
-                      <div>
-                        <label>{section}: </label>
+                    ))
+                  ) : section === 'skills' ? (
+                    Object.keys(userInfo.skills).map((skillType) => (
+                      <div key={skillType}>
+                        <label>{skillType}: </label>
                         <input
-                          value={userInfo[section]}
-                          onChange={(e) => handleInputChange(section, null, e.target.value)}
+                          value={userInfo.skills[skillType]}
+                          onChange={(e) => handleInputChange('skills', skillType, e.target.value)}
                           className="hima-rb-input-field"
                         />
                       </div>
-                    )}
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-        <div className="hima-rb-right-panel" ref={resumeRef}>
-          <div className="hima-rb-resume-header">
-            <img src={userInfo.profilePhoto} alt="Profile" className="hima-rb-profile-pic" />
-            <div className="hima-rb-name-title">
-              <h1 style={{ color: currentTemplate.headerColor }}>{userInfo.name}</h1>
-              <h2>{userInfo.title}</h2>
+                    ))
+                  ) : ['education', 'experience', 'certifications', 'projects'].includes(section) ? (
+                    <div>
+                      {userInfo[section].map((item, index) => (
+                        <div key={index} className={`hima-rb-${section}-item`}>
+                          {Object.keys(item).map((field) => (
+                            <input
+                              key={field}
+                              value={item[field]}
+                              onChange={(e) => handleInputChange(section, field, e.target.value, index)}
+                              placeholder={field.charAt(0).toUpperCase() + field.slice(1)}
+                              className="hima-rb-input-field"
+                            />
+                          ))}
+                          <button onClick={() => removeItem(section, index)} className="hima-rb-remove-button">Remove</button>
+                        </div>
+                      ))}
+                      <button onClick={() => addItem(section)} className="hima-rb-add-button">Add {section.charAt(0).toUpperCase() + section.slice(1)}</button>
+                    </div>
+                  ) : section === 'profilePhoto' ? (
+                    <div>
+                      <input
+                        type="file"
+                        accept="image/*"
+                        onChange={handleFileChange}
+                        className="hima-rb-input-field"
+                      />
+                    </div>
+                  ) : (
+                    <div>
+                      <label>{section}: </label>
+                      <input
+                        value={userInfo[section]}
+                        onChange={(e) => handleInputChange(section, null, e.target.value)}
+                        className="hima-rb-input-field"
+                      />
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
-          </div>
-          <div className="hima-rb-resume-section">
-            <h3 style={{ color: currentTemplate.headerColor, borderBottomColor: currentTemplate.headerColor }}>PROFESSIONAL SUMMARY</h3>
-            <p>{userInfo.summary}</p>
-          </div>
-          <div className="hima-rb-resume-section">
-            <h3 style={{ color: currentTemplate.headerColor, borderBottomColor: currentTemplate.headerColor }}>CONTACT</h3>
-            {Object.entries(userInfo.contact).map(([key, value]) => (
-              <p key={key}>
-                {key === 'phone' && '📞 '}
-                {key === 'email' && '✉ '}
-                {key === 'location' && '📍 '}
-                {key === 'linkedin' && '🔗 '}
-                {key === 'website' && '🌐 '}
-                {value}
-              </p>
-            ))}
-          </div>
-          <div className="hima-rb-resume-section">
-            <h3 style={{ color: currentTemplate.headerColor, borderBottomColor: currentTemplate.headerColor }}>EXPERIENCE</h3>
-            {userInfo.experience.map((exp, index) => (
-              <div key={index}>
-                <p><strong>{exp.title}</strong> at {exp.company}</p>
-                <p>{exp.date}</p>
-                <p>{exp.description}</p>
-              </div>
-            ))}
-          </div>
-          <div className="hima-rb-resume-section">
-            <h3 style={{ color: currentTemplate.headerColor, borderBottomColor: currentTemplate.headerColor }}>EDUCATION</h3>
-            {userInfo.education.map((edu, index) => (
-              <div key={index}>
-                <p><strong>{edu.degree}</strong></p>
-                <p>{edu.school}</p>
-                <p>{edu.date}</p>
-              </div>
-            ))}
-          </div>
-          <div className="hima-rb-resume-section">
-            <h3 style={{ color: currentTemplate.headerColor, borderBottomColor: currentTemplate.headerColor }}>CERTIFICATIONS</h3>
-            {userInfo.certifications.map((cert, index) => (
-              <div key={index}>
-                <p><strong>{cert.name}</strong></p>
-                <p>{cert.issuer}</p>
-                <p>{cert.date}</p>
-              </div>
-            ))}
-          </div>
-          <div className="hima-rb-resume-section">
-            <h3 style={{ color: currentTemplate.headerColor, borderBottomColor: currentTemplate.headerColor }}>TECHNICAL SKILLS</h3>
-            <p>{userInfo.skills.technical}</p>
-          </div>
-          <div className="hima-rb-resume-section">
-            <h3 style={{ color: currentTemplate.headerColor, borderBottomColor: currentTemplate.headerColor }}>SOFT SKILLS</h3>
-            <p>{userInfo.skills.soft}</p>
-          </div>
-        </div>
-        <div className="hima-rb-bottom-panel">
-          <button className="hima-rb-download" style={{ backgroundColor: currentTemplate.headerColor }} onClick={generatePDF}>Download PDF</button>
+          ))}
         </div>
       </div>
-    </>
+      <div className="hima-rb-right-panel" ref={resumeRef}>
+        <div className="hima-rb-resume-header">
+          <img src={userInfo.profilePhoto} alt="Profile" className="hima-rb-profile-pic" />
+          <div className="hima-rb-name-title">
+            <h1 style={{ color: currentTemplate.headerColor }}>{userInfo.name}</h1>
+            <h2>{userInfo.title}</h2>
+          </div>
+        </div>
+        <div className="hima-rb-resume-section">
+          <h3 style={{ color: currentTemplate.headerColor, borderBottomColor: currentTemplate.headerColor }}>PROFESSIONAL SUMMARY</h3>
+          <p>{userInfo.summary}</p>
+        </div>
+        <div className="hima-rb-resume-section">
+          <h3 style={{ color: currentTemplate.headerColor, borderBottomColor: currentTemplate.headerColor }}>CONTACT</h3>
+          {Object.entries(userInfo.contact).map(([key, value]) => (
+            <p key={key}>
+              {key === 'phone' && '📞 '}
+              {key === 'email' && '✉ '}
+              {key === 'location' && '📍 '}
+              {key === 'linkedin' && '🔗 '}
+              {key === 'website' && '🌐 '}
+              {value}
+            </p>
+          ))}
+        </div>
+        <div className="hima-rb-resume-section">
+          <h3 style={{ color: currentTemplate.headerColor, borderBottomColor: currentTemplate.headerColor }}>EXPERIENCE</h3>
+          {userInfo.experience.map((exp, index) => (
+            <div key={index}>
+              <p><strong>{exp.title}</strong> at {exp.company}</p>
+              <p>{exp.date}</p>
+              <p>{exp.description}</p>
+            </div>
+          ))}
+        </div>
+        <div className="hima-rb-resume-section">
+          <h3 style={{ color: currentTemplate.headerColor, borderBottomColor: currentTemplate.headerColor }}>PROJECTS</h3>
+          {userInfo.projects.map((project, index) => (
+            <div key={index}>
+              <p><strong>{project.name}</strong></p>
+              <p>{project.description}</p>
+              <p>Technologies: {project.technologies}</p>
+              <p>Link: <a href={project.link} target="_blank" rel="noopener noreferrer">{project.link}</a></p>
+            </div>
+          ))}
+        </div>
+        <div className="hima-rb-resume-section">
+          <h3 style={{ color: currentTemplate.headerColor, borderBottomColor: currentTemplate.headerColor }}>EDUCATION</h3>
+          {userInfo.education.map((edu, index) => (
+            <div key={index}>
+              <p><strong>{edu.degree}</strong></p>
+              <p>{edu.school}</p>
+              <p>{edu.date}</p>
+            </div>
+          ))}
+        </div>
+        <div className="hima-rb-resume-section">
+          <h3 style={{ color: currentTemplate.headerColor, borderBottomColor: currentTemplate.headerColor }}>CERTIFICATIONS</h3>
+          {userInfo.certifications.map((cert, index) => (
+            <div key={index}>
+              <p><strong>{cert.name}</strong></p>
+              <p>{cert.issuer}</p>
+              <p>{cert.date}</p>
+            </div>
+          ))}
+        </div>
+        <div className="hima-rb-resume-section">
+          <h3 style={{ color: currentTemplate.headerColor, borderBottomColor: currentTemplate.headerColor }}>TECHNICAL SKILLS</h3>
+          <p>{userInfo.skills.technical}</p>
+        </div>
+        <div className="hima-rb-resume-section">
+          <h3 style={{ color: currentTemplate.headerColor, borderBottomColor: currentTemplate.headerColor }}>SOFT SKILLS</h3>
+          <p>{userInfo.skills.soft}</p>
+        </div>
+      </div>
+      <div className="hima-rb-bottom-panel">
+        <button className="hima-rb-download" style={{ backgroundColor: currentTemplate.headerColor }} onClick={generatePDF}>Download PDF</button>
+      </div>
+    </div>
   );
 }
