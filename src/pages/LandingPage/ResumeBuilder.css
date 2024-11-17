@@ -3,14 +3,13 @@
     align-items: center;
     padding: 100px;
     text-align: left;
-    gap: 5%;
-    margin: 20px;
+    gap: 15%;
+    /* margin: 20px; */
     background: linear-gradient(rgb(231, 238, 250) 50%, rgb(255, 255, 255) 100%);
 }
 
 .text-section {
-    max-width: 30%;
-    margin-left: 15%;
+    max-width: 40%;
     display: flex;
     gap: 8px;
     flex-direction: column;
@@ -139,7 +138,6 @@
     border: none;
     border-radius: 4px;
     cursor: pointer;
-
 
 }
 
