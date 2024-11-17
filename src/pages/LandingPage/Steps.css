@@ -41,6 +41,7 @@
     font-size: 50px;
     padding: 5%;
     text-align: center;
+    font-family: Arial, sans-serif;
 }
 
 #steps {
@@ -54,11 +55,11 @@
 }
 
 .step_img {
-    height: 30%;
-    width: 25%;
+    height: 50px;
+    width: 50px;
     background-color: white;
     border-radius: 50%;
-    padding: 4%;
+    padding: 3px;
 }
 
 #template>div {
@@ -73,8 +74,8 @@
     }
 
     .step_img {
-        height: 10%;
-        width: 15%;
+        height: 50px;
+        width: 50px;
         background-color: white;
         border-radius: 50%;
         padding: 4%;
@@ -90,11 +91,11 @@
     }
 
     .step_img {
-        height: 10%;
-        width: 15%;
+        height: 50px;
+        width: 50px;
         background-color: white;
         border-radius: 50%;
-        padding: 4%;
+        padding: 2px;
     }
 
 }
@@ -107,11 +108,11 @@
     }
 
     .step_img {
-        height: 10%;
-        width: 15%;
+        height: 50px;
+        width: 50px;
         background-color: white;
         border-radius: 50%;
-        padding: 4%;
+        padding: 2px;
     }
 
 }
