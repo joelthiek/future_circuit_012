@@ -2,6 +2,8 @@
 import React from 'react';
 import './VideoSection.css';
 
+import videoImage from "../../assets/images/rb_2770.png"
+
 const VideoSection = () => {
     const handleClick = () => {
         window.open('https://youtu.be/ctNLcUd9Tl8?si=tN2z3RHVyvawzi0I', '_blank');
@@ -11,7 +13,7 @@ const VideoSection = () => {
         <div className="video-section">
             <div className="video-content">
                 <div className="video-thumbnail">
-                    <img src="/src/assets/images/rb_2770.png" alt="Video Thumbnail" />
+                    <img src={videoImage} alt="Video Thumbnail" />
                 </div>
                 <div className="video-text">
                     <h2>Recruiters Love Our Resume Craft.</h2>
