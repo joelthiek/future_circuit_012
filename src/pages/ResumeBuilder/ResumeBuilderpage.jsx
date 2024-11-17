@@ -3,6 +3,7 @@ import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 import './ResumeBuilderpage.css';
 import Navbar from '../../components/Navbar/Navbar';
+import CommingSoon from '../../components/Coomingsoon/CommingSoon';
 
 const templates = {
   modern: {
@@ -24,6 +25,7 @@ const templates = {
 
 export default function ResumeBuilder() {
   const [activeSection, setActiveSection] = useState(null);
+  const [openModal, setOpenModal] = useState(false)
   const [userInfo, setUserInfo] = useState({
     name: 'HIMANSHU DILIP LADEKAR',
     title: 'Full Stack Web Developer',
@@ -76,6 +78,7 @@ export default function ResumeBuilder() {
       }
     ],
   });
+
 
   const [currentTemplate, setCurrentTemplate] = useState(templates.modern);
   const resumeRef = useRef(null);
@@ -170,10 +173,20 @@ export default function ResumeBuilder() {
     pdf.save('resume.pdf');
   };
 
+
+  const handleExploreTemplate = () => {
+         setOpenModal(true)
+  }
+
+  const handleCloseModal = () => {
+    setOpenModal(false)
+  }
+
   return (
     <div className="hima-rb-resume-builder" style={{ fontFamily: currentTemplate.fontFamily, backgroundColor: currentTemplate.backgroundColor }}>
+        {openModal && <CommingSoon onClose={handleCloseModal}/>}
       <div className="hima-rb-left-panel">
-        <button className="hima-rb-explore-button" style={{ backgroundColor: currentTemplate.headerColor }}>
+        <button className="hima-rb-explore-button" style={{ backgroundColor: currentTemplate.headerColor }} onClick={handleExploreTemplate}>
           🔍 EXPLORE TEMPLATES
         </button>
         <div className="hima-rb-template-buttons">
