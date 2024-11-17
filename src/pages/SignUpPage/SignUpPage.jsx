@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { signUp } from "../../firebase/authService"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import signupImage from "../../assets/image/SignUp_image.png"
 import "./SignUpPage.css"
 const SignUpPage = () => {
@@ -87,7 +87,7 @@ const SignUpPage = () => {
             </button>
           </form>
           <div className='already-member'>
-            <a href='/auth'>I am already a member</a>
+            <Link to='/auth'>I am already a member</Link>
           </div>
         </div>
         <div className='signup-image'>

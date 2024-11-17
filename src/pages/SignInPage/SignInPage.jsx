@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import { logIn, signInWithGoogle } from "../../firebase/authService"
 import "./SignInPage.css"
 import Modal from "./modal"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import ResetPassword from "./resetPassword"
 import googleImage from "../../assets/image/google_image.png"
 import LoginImage from "../../assets/image/Login_image.jpg"
@@ -44,7 +44,7 @@ const SignInPage = () => {
           <h2 className='headings'>Log In</h2>
           <div className='sign-up-link'>
             <span>Don't have an account? </span>
-            <a href='/register'>Sign Up</a>
+            <Link to='/register'>Sign Up</Link>
           </div>
           <form onSubmit={handleLogIn}>
             <div className='input-container'>
