@@ -7,7 +7,7 @@ const ResumeBuilder = () => {
     const navigate = useNavigate();
 
     const handleClick = () => {
-        navigate('/auth')
+        navigate('/create-resume')
     }
     return (
         <>
