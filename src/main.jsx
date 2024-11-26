@@ -4,11 +4,12 @@ import App from "./App.jsx"
 import Footer from "./components/Footer/Footer.jsx"
 import { BrowserRouter as Router, useLocation } from "react-router-dom"
 import { AuthProvider } from "./contextAPI/AuthContext.jsx"
+import { ChakraProvider } from "@chakra-ui/react"
 
 function Layout() {
   const location = useLocation()
 
-  const hideFooterPaths = ["/create-resume", "/auth", "/register"]
+  const hideFooterPaths = ["/create-resume", "/auth", "/register", "/resume"]
 
   return (
     <>
@@ -20,8 +21,10 @@ function Layout() {
 
 createRoot(document.getElementById("root")).render(
   <Router>
-    <AuthProvider>
-      <Layout />
-    </AuthProvider>
+    <ChakraProvider>
+      <AuthProvider>
+        <Layout />
+      </AuthProvider>
+    </ChakraProvider>
   </Router>
 )

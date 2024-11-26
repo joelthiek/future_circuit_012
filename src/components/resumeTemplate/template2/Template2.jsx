@@ -3,7 +3,7 @@ import React from 'react'
 const Template2 = () => {
   return (
     <div>
-      
+      Template2
     </div>
   )
 }

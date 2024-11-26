@@ -1,0 +1,208 @@
+.template1Main {
+    width: 210mm;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .a4TemplateHeightCheck{
+      height: 297mm;
+      border-bottom: 1px dashed red;
+  }
+
+  .template1Conatainer{
+    display: flex;
+    height: 100%;
+  }
+
+  .template1Left{
+    background-color:rgb(102, 102, 102);
+    height: 100%;
+    width: 30%;
+    padding: 20px;
+  }
+
+
+
+.template1PhotoContainer{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    margin: auto;
+    margin-top: 10px;
+}
+
+.template1Img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.template1LeftSec{
+    margin-top: 20px;
+}
+
+.template1SecTitle{
+    font-size: 19px;
+    font-weight: 600;
+    color: wheat;
+}
+
+.template1contactUl{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 20px;
+}
+
+.template1contactUl > li{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: wheat;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.template1EducationContainer{
+    color: wheat;
+}
+
+.template1EducationContainer p:first-child{
+    font-size: 15px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.template1EducationContainer p:nth-child(2){
+    font-size: 15px;
+}
+
+.template1EducationContainer p:last-child{
+    font-size: 15px;
+}
+
+.template1TechSkills{
+   display: flex;
+   gap: 5px;
+   flex-wrap: wrap;
+   margin-top: 10px;
+}
+
+.template1TechSkills > li{
+    list-style-type: none;
+    background-color: wheat;
+    padding: 5px 10px;
+    font-size: 12px;
+    color: darkblue;
+    border-radius: 20px;
+    font-weight:500;
+}
+
+
+
+.template1Right{
+    width: 70%;
+    padding: 20px;
+ }
+
+ .template1RightName{
+    font-size: 34px;
+    font-weight: 600;
+ }
+
+ .template1Role{
+    font-size: 17px;
+    font-weight: bold;
+ }
+
+ .template1RightSec{
+    margin-top: 20px;
+
+ }
+
+ .template1Righttitle{
+    font-size: 19px;
+    font-weight: 600;
+    border-bottom: 1px solid black;
+}
+
+.template1RightSummary{
+    font-size: 15px;
+    text-align: justify;
+    line-height: 17px;
+    margin-top: 10px;
+}
+
+.template1ExpTitle{
+    font-size:15px;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+.template1ExpRole{
+    font-size: 14px;
+}
+
+.template1ExpResponsibility{
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.template1ExpList{
+    padding-left: 20px;
+}
+
+.template1ExpList > li{
+    font-size: 14px;
+    text-align: justify;
+    line-height: 18px;
+    margin-top: 5px;
+}
+
+.template1RightProject{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-top: 10px;
+
+}
+
+.template1ProjectTitle{
+    font-size:15px;
+    font-weight: 600;
+}
+
+.template1ProjectLink{
+    font-size: 10px;
+}
+
+.template1RightTechStacks{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.template1RightTechStacks > li{
+    list-style-type: none;
+    font-size: 12px;
+    font-weight: 600;
+    color: gray;
+}
+
+.template1ProjectResponsibility{
+    padding-left: 20px;
+    margin-top: 10px;
+}
+
+.template1ProjectResponsibility > li{
+    font-size: 14px;
+    line-height: 19px;
+}
+
+
+
+
+
+  
+

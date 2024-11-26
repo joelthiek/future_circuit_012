@@ -4,6 +4,7 @@ import SignInPage from "./pages/SignInPage/SignInPage"
 import SignUpPage from "./pages/SignUpPage/SignUpPage"
 import ResumeBuilder from "./pages/ResumeBuilder/ResumeBuilderpage"
 import { PrivateRoute } from "./contextAPI/privateRoute/PrivateRoute"
+import ResumeMainPage from "./pages/ResumePage/ResumeMainPage"
 function App() {
   return (
     <div>
@@ -17,6 +18,7 @@ function App() {
               <ResumeBuilder/>
             </PrivateRoute>
         }/>
+      <Route path="/resume" element={<ResumeMainPage/>}/>
       </Routes>
     </div>
   )
