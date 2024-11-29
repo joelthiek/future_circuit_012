@@ -1,109 +1,194 @@
-/* General Layout */
 .template2Main {
-    width: 210mm;
-    padding: 20px;
-    font-family: 'Arial', sans-serif;
-    background: #f4f4f9;
-    color: #333;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    display: flex;
-  }
-  
-  .template2Container {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-  }
-  
-  /* Left Section (Name, Contact Info, Education, Skills) */
-  .template2Left {
-    width: 45%;
-    padding-right: 20px;
-  }
-  
-  .template2Name {
-    font-size: 28px;
-    font-weight: bold;
-    margin: 0;
-  }
-  
-  .template2Role {
-    font-size: 20px;
-    font-weight: 500;
-    color: #7f8c8d;
-    margin-bottom: 20px;
-  }
-  
-  .template2Contact ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .template2Contact ul li {
-    margin-bottom: 10px;
-    font-size: 14px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  
-  .template2Section h2 {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-  
-  .template2Section ul {
-    list-style-type: none;
-    padding-left: 20px;
-  }
-  
-  .template2Section ul li {
-    font-size: 14px;
-    margin-bottom: 5px;
-  }
-  
-  /* Right Section (Photo, Professional Summary, Projects, Work Experience) */
-  .template2Right {
-    width: 55%;
-    padding-left: 20px;
-  }
-  
-  .template2PhotoContainer {
-    width: 130px;
-    height: 130px;
-    border-radius: 50%;
-    overflow: hidden;
-    border: 4px solid #7f8c8d;
-    margin-bottom: 20px;
-    align-self: center;
-  }
-  
-  .template2Img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  
-  .template2Project h3 {
-    font-size: 16px;
-    font-weight: bold;
-  }
-  
-  .template2Project span {
-    font-weight: normal;
-    font-size: 14px;
-    color: #7f8c8d;
-  }
-  
-  .template2Section p {
-    font-size: 14px;
-    line-height: 1.6;
-  }
-  
-  .template2Section ul {
-    list-style-type: square;
-    padding-left: 20px;
-  }
-  
+  width: 210mm;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.a4TemplateHeightCheck{
+  height: 297mm;
+  border-bottom: 1px dashed red;
+  overflow: hidden;
+}
+.template2Heading{
+  display: flex;
+  justify-content: space-between;
+  height: 200px;
+  background-color: rgb(198, 211, 224);
+  align-items: center;
+  padding: 20px;
+}
+
+.template2headLeft p:first-child{
+   font-size: 37px;
+   color: rgb(37, 34, 34);
+}
+
+.template2headLeft p:nth-child(2){
+  font-size: 21px;
+  color: rgb(94, 61, 61);
+}
+
+.template2headRightPhotoConatiner{
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.template2headRightPhotoConatiner img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.template2body{
+  display: flex;
+  height: 100%;
+  padding: 20px;
+}
+
+.template2bodyLeft{
+  width: 30%;
+  border-right: 1px solid gray;
+}
+
+.template2bodyRight{
+  width: 70%;
+  padding: 10px;
+}
+
+.Template2bodyTitle{
+  font-size: 16px;
+  font-weight: bold;
+  color: rgb(97, 93, 93);
+  margin-top: 10px;
+}
+
+.template2contactlist > li, .template2contactlist > a{
+   display: flex;
+   align-items: center;
+   gap: 10px;
+   font-size: 14px;
+   font-weight:500;
+}
+
+.template2ContactSec{
+  border-bottom: 1px solid gray;
+}
+
+.template2EducationList p:first-child{
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.template2EducationList p:nth-child(2){
+  font-size: 14px;
+}
+
+.template2EducationList p:last-child{
+  font-size: 14px;
+}
+
+.template2EductionSec{
+  border-bottom: 1px solid gray;
+}
+
+.template2TechnicalskillsList{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+
+}
+
+.template2TechnicalskillsList > li{
+  list-style-type: none;
+  font-size: 14px;
+}
+
+.template2TechnicalSkillsSec{
+  border-bottom: 1px solid gray;
+  padding-bottom: 10px;
+}
+
+.template2SummarySec p:last-child{
+  font-size: 14px;
+  text-align: justify;
+}
+
+.template2SummarySec{
+  border-bottom: 1px solid gray;
+  padding-bottom: 10px;
+}
+
+.template2ProjectHead{
+  display: flex;
+  gap: 10px;
+}
+
+.template2ProjectHead p:first-child{
+  font-size: 15px;
+}
+
+.template2ProjectHead p:nth-child(2){
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.template2ProjectHead > a{
+  font-size: 15px;
+}
+
+.template2ProjectSkills{
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 25px;
+  gap: 7px;
+  align-items: center;
+}
+
+.template2ProjectSkills > li{
+  font-size: 12px;
+  list-style-type: none;
+}
+
+.template2RespTitle{
+  padding-left: 25px;
+  font-size: 15px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.template2RespList{
+  padding-left: 30px;
+}
+
+.template2RespList > li{
+  font-size: 14px;
+}
+
+.template2ExpList p:first-child{
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.template2ExpList p:nth-child(2){
+  font-size: 12px;
+
+}
+
+.template2ExpResp{
+  font-size: 14px;
+  font-weight: bold;
+  color: gray;
+  margin-top: 5px;
+}
+
+.template2expRespList{
+  padding-left: 30px;
+}
+
+.template2expRespList > li{
+  font-size: 14px;
+}
+
+
+

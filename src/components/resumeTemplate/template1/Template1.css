@@ -16,7 +16,7 @@
   .template1Left{
     background-color:rgb(102, 102, 102);
     height: 100%;
-    width: 30%;
+    width: 35%;
     padding: 20px;
   }
 
@@ -56,6 +56,15 @@
 }
 
 .template1contactUl > li{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: wheat;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.template1contactUl > a{
     display: flex;
     align-items: center;
     gap: 10px;
@@ -198,6 +207,10 @@
 .template1ProjectResponsibility > li{
     font-size: 14px;
     line-height: 19px;
+}
+
+.template1Role{
+    font-size: 19px;
 }
 
 

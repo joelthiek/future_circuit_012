@@ -1,0 +1,178 @@
+.template3MainContainer {
+  width: 210mm;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.template3headingSec {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: beige;
+}
+
+.template3ProfileName {
+  font-size: 32px;
+  font-weight: 600;
+}
+
+.template3profileRole {
+  font-size: 19px;
+}
+
+.template3ContactSection {
+  margin-top: 10px;
+  padding: 10px;
+}
+
+.template3ContactSection p:first-child {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.template3ContactList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.template3ContactList > li {
+  list-style-type: none;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.template3TecnicalSkillsSec {
+  margin-top: 10px;
+  padding: 10px;
+}
+
+.template3TecnicalSkillsSec p:first-child {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.template3SkillsList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.template3SkillsList > li {
+  font-size: 14px;
+  list-style-type: none;
+}
+
+.template3ProjectSec {
+  margin-top: 10px;
+  padding: 10px;
+}
+
+.template3ProjectSec p:first-child {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.template3ProjectHead {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.template3ProjectHead p:first-child {
+  font-weight: 200;
+  font-size: 15px;
+}
+
+.template3ProjectHead p:nth-child(2) {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.template3ProjectHead > a {
+  font-size: 12px;
+  border-bottom: 1px solid gray;
+}
+
+.template3projectTechList {
+  display: flex;
+  padding-left: 35px;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.template3projectTechList > li {
+  list-style-type: none;
+  font-size: 12px;
+}
+
+.template3FeaturesTitle {
+  padding-left: 35px;
+  margin-top: 10px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.template3FeatureList {
+  padding-left: 60px;
+}
+
+.template3FeatureList > li {
+  font-size: 14px;
+  text-align: justify;
+  margin-top: 5px;
+}
+
+.template3ProfileSummary {
+  margin-top: 10px;
+  padding: 10px;
+}
+
+.template3ProfileSummary p:first-child {
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.template3ProfileSummary p:nth-child(3) {
+  font-size: 14px;
+  margin-top: 10px;
+  text-align: justify;
+}
+
+.template3ExpSec {
+  margin-top: 10px;
+  padding: 10px;
+}
+
+.template3ExpTitle {
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.template3ExpHeadList {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.template3ExpHeadList p:first-child {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.template3ExpHeadList :not(:first-child) {
+  font-size: 12px;
+}
+
+.template3ExpResponsilty {
+  padding-left: 30px;
+}
+
+.template3ExpResponsilty > li {
+  font-size: 14px;
+  text-align: justify;
+}

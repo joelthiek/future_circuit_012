@@ -116,7 +116,7 @@ const Template1 = ({ formState }) => {
               <p className='template1RightName'>{formState.profile.name}</p>
             )}
             {formState.profile.role && (
-              <p className='template1RightName'>{formState.profile.role}</p>
+              <p className='template1Role'>{formState.profile.role}</p>
             )}
 
             <div className='template1RightSec'>
@@ -130,9 +130,7 @@ const Template1 = ({ formState }) => {
             </div>
 
             <div className='template1RightSec'>
-              {formState.experiences.responsibilities > 0 && (
-                <p className='template1Righttitle'>Experience</p>
-              )}
+              <p className='template1Righttitle'>Experience</p>
               {formState.experiences.map((exp) => (
                 <>
                   <p className='template1ExpTitle'>{exp.companyName}</p>

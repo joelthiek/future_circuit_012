@@ -8,7 +8,7 @@ import "./ResumeMainPage.css"
 import TemplateCard from "../../components/templateCard/TemplateCard"
 import { useBreakpointValue } from "@chakra-ui/react"
 
-import html2pdf from 'html2pdf.js';
+import html2pdf from "html2pdf.js"
 import Navbar from "../../components/Navbar/Navbar"
 
 const ResumeMainPage = () => {
@@ -25,7 +25,7 @@ const ResumeMainPage = () => {
       githubUrl: "",
       portfolioUrl: "",
       role: "",
-      photo:""
+      photo: "",
     },
     educations: [],
     technicalSkills: [],
@@ -51,7 +51,7 @@ const ResumeMainPage = () => {
     ],
   })
 
-  const isMobileView = useBreakpointValue({ base: true, md: false });
+  const isMobileView = useBreakpointValue({ base: true, md: false })
 
   const handleFormChange = (section, field, value) => {
     setFormState((prev) => ({
@@ -127,17 +127,17 @@ const ResumeMainPage = () => {
   const templateCard = [
     {
       resumeCard:
-        "https://marketplace.canva.com/EAFRuCp3DcY/1/0/1131w/canva-black-white-minimalist-cv-resume-f5JNR-K5jjw.jpg",
+        "https://d1csarkz8obe9u.cloudfront.net/posterpreviews/resume-curriculum-vitae-design-template-cd5136dd58591765d75125a12226d1cd.jpg?ts=1674136405",
       templateName: "template1",
     },
     {
       resumeCard:
-        "https://www.jobhero.com/resources/wp-content/uploads/2023/07/tutor-template-resume-JH.svg",
+        "https://marketplace.canva.com/EAE8mhdnw_g/2/0/1131w/canva-grey-clean-cv-resume-photo-pIsBixsev8I.jpg",
       templateName: "template2",
     },
     {
       resumeCard:
-        "https://d.novoresume.com/images/doc/skill-based-resume-template.png",
+        "https://cdn.enhancv.com/predefined-examples/DuL0GzrjhjZHr0mwbwgPitMJ3Z20hVmYHQciz6rm/image.png",
       templateName: "template3",
     },
   ]
@@ -151,9 +151,9 @@ const ResumeMainPage = () => {
       case "template1":
         return <Template1 formState={formState} />
       case "template2":
-        return <Template2 formState={formState}/>
+        return <Template2 formState={formState} />
       case "template3":
-        return <Template3 formState={formState}/>
+        return <Template3 formState={formState} />
       default:
         return <div>Please select a template.</div>
     }
@@ -294,106 +294,107 @@ const ResumeMainPage = () => {
     })
   }
 
+  const downloadResumeAsPDF = () => {
+    const resumeContent = document.querySelector(".resumeRightMain")
 
-const downloadResumeAsPDF = () => {
-  const resumeContent = document.querySelector('.resumeRightMain');
-
-  const options = {
-    margin:0,
-    padding:0,
-    filename:     'resume.pdf',
-    image:        { type: 'jpeg', quality: 0.98 },
-    html2canvas:  { scale: 2 },
-    jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
-  };
-
-  html2pdf().from(resumeContent).set(options).save();
-}
-
-const handlePhotoUpload = (e) => {
-   const file = e.target.files[0]
-
-   if (file){
-    const reader = new FileReader()
-    reader.onload = () => {
-      setFormState((prevState)=> ({
-        ...prevState, 
-        profile:{...prevState.profile, photo:reader.result}
-      }))
+    const options = {
+      margin: 0,
+      padding: 0,
+      filename: "resume.pdf",
+      image: { type: "jpeg", quality: 0.98 },
+      html2canvas: { scale: 2 },
+      jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
     }
-    reader.readAsDataURL(file)
-   }
-}
-  
+
+    html2pdf().from(resumeContent).set(options).save()
+  }
+
+  const handlePhotoUpload = (e) => {
+    const file = e.target.files[0]
+
+    if (file) {
+      const reader = new FileReader()
+      reader.onload = () => {
+        setFormState((prevState) => ({
+          ...prevState,
+          profile: { ...prevState.profile, photo: reader.result },
+        }))
+      }
+      reader.readAsDataURL(file)
+    }
+  }
 
   return (
     <div>
-    <Navbar/>
-    <div className='resumeMain'>
-    {isMobileView && (
-          <p className="note">
+      <Navbar />
+      <div className='resumeMain'>
+        {isMobileView && (
+          <p className='note'>
             Note : Use Laptop/Desktop or Tablet for best Experience
           </p>
         )}
-      <div className='resumeLeftMain'>
-        <Box>
-          <Button
-            onClick={onExploreTemplateToggle}
-            width='100%'
-            size='sm'
-            colorScheme='blue'
-          >
-            {isExploreTemplate ? "Fill Input Form" : "Explore Template"}
-          </Button>
-        </Box>
-
-        {isExploreTemplate ? (
-          <Box display='grid'  gridTemplateColumns={{ base: '1fr', md: 'repeat(2, 1fr)' }}   gap='10px'>
-            {templateCard.map((card) => (
-              <TemplateCard
-                key={card.templateName}
-                card={card.resumeCard}
-                templateName={card.templateName}
-                handleSelect={setSelectedTemplate}
-              />
-            ))}
-          </Box>
-        ) : (
+        <div className='resumeLeftMain'>
           <Box>
-            <InputResumeForm
-              formState={formState}
-              handleFormChange={handleFormChange}
-              addEducation={addEducation}
-              updateEducation={updateEducation}
-              handleDeleteEducation={handleDeleteEducation}
-              handleSkillChange={handleSkillChange}
-              setFormState={setFormState}
-              addExperience={addExperience}
-              updateExperience={updateExperience}
-              deleteExperience={deleteExperience}
-              addResponsibility={addResponsibility}
-              updateResponsibility={updateResponsibility}
-              deleteResponsibility={deleteResponsibility}
-              addProject={addProject}
-              updateProject={updateProject}
-              deleteProject={deleteProject}
-              addTechStack = {addTechStack}
-              deleteTechStack={deleteTechStack}
-              updateTechStack = {updateTechStack}
-              addProjectResponsibility={addProjectResponsibility}
-              updateProjectResponsibility={updateProjectResponsibility}
-              deleteProjectResponsibility={deleteProjectResponsibility}
-              downloadResumeAsPDF={downloadResumeAsPDF}
-              handlePhotoUpload={handlePhotoUpload}
-            />
+            <Button
+              onClick={onExploreTemplateToggle}
+              width='100%'
+              size='sm'
+              colorScheme='blue'
+            >
+              {isExploreTemplate ? "Fill Input Form" : "Explore Template"}
+            </Button>
           </Box>
-        )}
+
+          {isExploreTemplate ? (
+            <Box
+              display='grid'
+              gridTemplateColumns={{ base: "1fr", md: "repeat(2, 1fr)" }}
+              gap='10px'
+            >
+              {templateCard.map((card) => (
+                <TemplateCard
+                  key={card.templateName}
+                  card={card.resumeCard}
+                  templateName={card.templateName}
+                  handleSelect={setSelectedTemplate}
+                />
+              ))}
+            </Box>
+          ) : (
+            <Box>
+              <InputResumeForm
+                formState={formState}
+                handleFormChange={handleFormChange}
+                addEducation={addEducation}
+                updateEducation={updateEducation}
+                handleDeleteEducation={handleDeleteEducation}
+                handleSkillChange={handleSkillChange}
+                setFormState={setFormState}
+                addExperience={addExperience}
+                updateExperience={updateExperience}
+                deleteExperience={deleteExperience}
+                addResponsibility={addResponsibility}
+                updateResponsibility={updateResponsibility}
+                deleteResponsibility={deleteResponsibility}
+                addProject={addProject}
+                updateProject={updateProject}
+                deleteProject={deleteProject}
+                addTechStack={addTechStack}
+                deleteTechStack={deleteTechStack}
+                updateTechStack={updateTechStack}
+                addProjectResponsibility={addProjectResponsibility}
+                updateProjectResponsibility={updateProjectResponsibility}
+                deleteProjectResponsibility={deleteProjectResponsibility}
+                downloadResumeAsPDF={downloadResumeAsPDF}
+                handlePhotoUpload={handlePhotoUpload}
+              />
+            </Box>
+          )}
+        </div>
+
+        <div className='resumeRightMain'>{renderTemplate()}</div>
       </div>
-
-      <div className='resumeRightMain'>{renderTemplate()}</div>
     </div>
-    </div>
-
   )
 }
 

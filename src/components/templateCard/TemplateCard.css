@@ -1,8 +1,8 @@
 /* Container for the card */
 .templatecardMain {
     position: relative;
-    width: 200px;
-    height: 300px;
+    width: 100%;
+    height: 100%;
     margin-top: 30px;
     overflow: hidden;
     border-radius: 8px;
@@ -13,18 +13,17 @@
   .templateCardImg {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    transition: opacity 0.3s ease; /* Smooth transition */
+    transition: opacity 0.3s ease;
+    object-fit: contain;
   }
   
-  /* Overlay for dark effect */
   .templateCardOverlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0); /* Initially transparent */
+    background-color: rgba(0, 0, 0, 0);
     transition: background-color 0.3s ease;
     z-index: 1;
   }

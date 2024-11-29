@@ -25,6 +25,7 @@ import { MdOutlineEmail, MdOutlineSchool } from "react-icons/md"
 import { IoIosInformationCircle } from "react-icons/io"
 import { AiOutlineDelete } from "react-icons/ai"
 import { MdOutlinePhoto } from "react-icons/md";
+import { MdWork } from "react-icons/md";
 
 const InputResumeForm = ({
   formState,
@@ -84,6 +85,19 @@ const InputResumeForm = ({
                       value={profile.name}
                       onChange={(e) =>
                         handleFormChange("profile", "name", e.target.value)
+                      }
+                    />
+                  </InputGroup>
+                  <InputGroup>
+                    <InputLeftElement pointerEvents='none'>
+                      <MdWork color='gray.300' />
+                    </InputLeftElement>
+                    <Input
+                      type='text'
+                      placeholder='Enter your role'
+                      value={profile.role}
+                      onChange={(e) =>
+                        handleFormChange("profile", "role", e.target.value)
                       }
                     />
                   </InputGroup>

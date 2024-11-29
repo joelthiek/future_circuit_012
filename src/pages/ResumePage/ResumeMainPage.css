@@ -1,15 +1,14 @@
 .resumeMain {
   display: flex;
   height: 90vh;
-  gap: 30px;
+  gap: 100px;
   width: 90%;
   margin: auto;
   margin-top: 30px;
-  flex-direction: column;
 }
 
 .resumeLeftMain {
-  width: 100%;
+  width: 40%;
   border-right: 1px solid gray;
   padding: 20px;
   overflow-y: auto;
@@ -30,38 +29,22 @@
   color: red;
 }
 
-/* Responsive Design */
-@media (min-width: 768px) {
+
+@media screen and (max-width:974px) {
   .resumeMain {
-    flex-direction: row;
+    flex-direction: column;
     gap: 100px;
+    height: 100%;
   }
 
-  .resumeLeftMain {
-    width: 35%;
-  }
-
-  .resumeRightMain {
-    width: 65%;
-  }
-
-
-}
-
-@media (max-width: 768px) {
-  .resumeLeftMain {
+  .resumeLeftMain{
     width: 100%;
+    height: 100%;
   }
 
-  .resumeRightMain {
+  .resumeRightMain{
     width: 100%;
   }
 }
 
-@media (max-width: 480px) {
-  .resumeMain {
-    gap: 10px;
-  }
- 
-  
-}
+
