@@ -1,0 +1,109 @@
+/* General Layout */
+.template2Main {
+    width: 210mm;
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+    background: #f4f4f9;
+    color: #333;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+  }
+  
+  .template2Container {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  /* Left Section (Name, Contact Info, Education, Skills) */
+  .template2Left {
+    width: 45%;
+    padding-right: 20px;
+  }
+  
+  .template2Name {
+    font-size: 28px;
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  .template2Role {
+    font-size: 20px;
+    font-weight: 500;
+    color: #7f8c8d;
+    margin-bottom: 20px;
+  }
+  
+  .template2Contact ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .template2Contact ul li {
+    margin-bottom: 10px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .template2Section h2 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .template2Section ul {
+    list-style-type: none;
+    padding-left: 20px;
+  }
+  
+  .template2Section ul li {
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+  
+  /* Right Section (Photo, Professional Summary, Projects, Work Experience) */
+  .template2Right {
+    width: 55%;
+    padding-left: 20px;
+  }
+  
+  .template2PhotoContainer {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid #7f8c8d;
+    margin-bottom: 20px;
+    align-self: center;
+  }
+  
+  .template2Img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .template2Project h3 {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  .template2Project span {
+    font-weight: normal;
+    font-size: 14px;
+    color: #7f8c8d;
+  }
+  
+  .template2Section p {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  
+  .template2Section ul {
+    list-style-type: square;
+    padding-left: 20px;
+  }
+  

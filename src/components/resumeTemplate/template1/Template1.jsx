@@ -6,9 +6,10 @@ import { FaGithub } from "react-icons/fa"
 import { CiLinkedin } from "react-icons/ci"
 import { CiLocationOn } from "react-icons/ci"
 import { MdOutlineEmail } from "react-icons/md"
-import { IoIosInformationCircle, IoMdInformation } from "react-icons/io"
+import { IoMdInformation } from "react-icons/io"
+import { BsPersonWorkspace } from "react-icons/bs"
 
-const Template1 = () => {
+const Template1 = ({ formState }) => {
   return (
     <div className='template1Main'>
       <div className='a4TemplateHeightCheck'>
@@ -17,7 +18,11 @@ const Template1 = () => {
             <div className='template1PhotoContainer'>
               <img
                 className='template1Img'
-                src='https://www.zica.co.zm/wp-content/uploads/2020/08/Passport-Size-Photo.jpg'
+                src={
+                  formState.profile.photo
+                    ? formState.profile.photo
+                    : "https://upload.wikimedia.org/wikipedia/commons/7/72/Default-welcomer.png"
+                }
                 alt='passportPhoto'
               />
             </div>
@@ -27,176 +32,158 @@ const Template1 = () => {
               <hr />
 
               <ul className='template1contactUl'>
-                <li>
-                  <CiPhone /> <span>8901263445</span>
-                </li>
-                <li>
-                  <MdOutlineEmail /> <span>joel@gmail.com</span>
-                </li>
-                <li>
-                  <CiLocationOn /> <span>Bangalore,India</span>
-                </li>
-                <li>
-                  <CiLinkedin /> <span>https://linkedin/joel</span>
-                </li>
-                <li>
-                  <FaGithub /> <span>http://github/joel</span>
-                </li>
-                <li>
-                  <IoMdInformation /> <span>https://myportfolio.com</span>
-                </li>
+                {formState.profile.phoneNo && (
+                  <li>
+                    <CiPhone /> <span>{formState.profile.phoneNo}</span>
+                  </li>
+                )}
+
+                {formState.profile.email && (
+                  <li>
+                    <MdOutlineEmail /> <span>{formState.profile.email}</span>
+                  </li>
+                )}
+
+                {formState.profile.locationAddress && (
+                  <li>
+                    <CiLocationOn />{" "}
+                    <span>{formState.profile.locationAddress}</span>
+                  </li>
+                )}
+                {formState.profile.linkedInUrl && (
+                  <a href={formState.profile.linkedInUrl}>
+                    <CiLinkedin /> <span>{formState.profile.linkedInUrl}</span>
+                  </a>
+                )}
+
+                {formState.profile.githubUrl && (
+                  <a href={formState.profile.githubUrl}>
+                    <FaGithub /> <span>{formState.profile.githubUrl}</span>
+                  </a>
+                )}
+
+                {formState.profile.portfolioUrl && (
+                  <a href={formState.profile.portfolioUrl}>
+                    <IoMdInformation />{" "}
+                    <span>{formState.profile.portfolioUrl}</span>
+                  </a>
+                )}
               </ul>
             </div>
 
             <div className='template1LeftSec'>
               <p className='template1SecTitle'>Education</p>
               <hr />
-
-              <div className='template1EducationContainer'>
-                <p>Bachelor of commerce</p>
-                <p>Gurucharan College</p>
-                <p>June 2017 - April 2022</p>
-              </div>
+              {formState.educations.map((edu, index) => (
+                <div className='template1EducationContainer' key={index}>
+                  <p>{edu.degree}</p>
+                  <p>{edu.instituteName}</p>
+                  <p>
+                    {edu.startDate} - {edu.endDate}
+                  </p>
+                </div>
+              ))}
             </div>
 
             <div className='template1LeftSec'>
               <p className='template1SecTitle'>Technical Skills</p>
               <hr />
 
-              <ul className='template1TechSkills'>
-                <li>React</li>
-                <li>Javascript</li>
-                <li>AWS</li>
-                <li>Python</li>
-                <li>MongoDB</li>
-                <li>TailwindCSS</li>
-              </ul>
+              {formState.technicalSkills.length > 0 && (
+                <ul className='template1TechSkills'>
+                  {formState.technicalSkills.map((skill) => (
+                    <li key={skill}>{skill}</li>
+                  ))}
+                </ul>
+              )}
             </div>
 
             <div className='template1LeftSec'>
               <p className='template1SecTitle'>Soft Skills</p>
               <hr />
-              <ul className='template1TechSkills'>
-                <li>Adaptability</li>
-                <li>Problem Solving</li>
-                <li>Analytic Thinking</li>
-              </ul>
+
+              {formState.softSkills.length > 0 && (
+                <ul className='template1TechSkills'>
+                  {formState.softSkills.map((skill) => (
+                    <li key={skill}>{skill}</li>
+                  ))}
+                </ul>
+              )}
             </div>
           </div>
           <div className='template1Right'>
-            <p className='template1RightName'>Joel Rokiemlo Thiek</p>
-            <p className='template1Role'>Full-Stack Developer</p>
+            {formState.profile.name && (
+              <p className='template1RightName'>{formState.profile.name}</p>
+            )}
+            {formState.profile.role && (
+              <p className='template1RightName'>{formState.profile.role}</p>
+            )}
 
             <div className='template1RightSec'>
               <p className='template1Righttitle'>Profile Summary</p>
-              <p className='template1RightSummary'>
-                Full Stack Web Developer skilled in the MERN stack and
-                JavaScript, with a focus on code quality, problem-solving, and
-                team collaboration. Quick to adapt to new technologies,
-                including Generative AI.
-              </p>
+
+              {formState.profileSummary && (
+                <p className='template1RightSummary'>
+                  {formState.profileSummary}
+                </p>
+              )}
             </div>
 
             <div className='template1RightSec'>
-              <p className='template1Righttitle'>Experience</p>
-              <p className='template1ExpTitle'>Grace English School</p>
-              <p className='template1ExpRole'>Assistant Teacher</p>
-              <p className='template1ExpRole'>August 2022 - February 2023</p>
+              {formState.experiences.responsibilities > 0 && (
+                <p className='template1Righttitle'>Experience</p>
+              )}
+              {formState.experiences.map((exp) => (
+                <>
+                  <p className='template1ExpTitle'>{exp.companyName}</p>
+                  <p className='template1ExpRole'>{exp.role}</p>
+                  <p className='template1ExpRole'>
+                    {exp.startDate} - {exp.endDate}
+                  </p>
 
-              <p className='template1ExpResponsibility'>
-                Job responsibilities:
-              </p>
-              <ul className='template1ExpList'>
-                <li>
-                  Collaborated with school staff and administration to manage
-                  and organize activities, showcasing strong teamwork and
-                  communication skills.
-                </li>
-                <li>
-                  Conducted assessments and prepared exams, demonstrating
-                  attention to detail and problem-solving abilities.
-                </li>
-                <li>
-                  Typed and prepared exam questions to ensure smooth assessment
-                  processes.
-                </li>
-                <li>Occasionally took on responsibilities as a warden.</li>
-              </ul>
+                  <p className='template1ExpResponsibility'>
+                    Job responsibilities:
+                  </p>
+                  <ul className='template1ExpList'>
+                    {exp.responsibilities.map((resp, index) => (
+                      <li key={index}>{resp}</li>
+                    ))}
+                  </ul>
+                </>
+              ))}
             </div>
 
             <div className='template1RightSec'>
               <p className='template1Righttitle'>Projects</p>
-              
-              <div className='template1RightProject'>
-                <p className="template1ProjectTitle">Finance Flow - Tracker</p>
-                <a className="template1ProjectLink" href='#'>Live Demo Link</a>
-                <a className="template1ProjectLink" href='#'>Github Repo</a>
-              </div>
-              <ul className='template1RightTechStacks'>
-                <li>React | </li>
-                <li>AWS | </li>
-                <li>Tailwind | </li>
-                <li>Firebase | </li>
-                <li>Node.js | </li>
-              </ul>
 
-              <ul className="template1ProjectResponsibility">
-                <li>
-                  Income Tracking: Visual and tabular representations to display
-                  total income, categorized by source or period.
-                </li>
-                <li>
-                  Expense Tracking: Visualization of expenses with detailed
-                  breakdowns and categories.
-                </li>
-                <li>
-                  Dark and Light Mode: Option to switch between dark and light
-                  themes for user preference.
-                </li>
-                <li>
-                  Chat: Integrated chat feature for communication with support
-                  or team members.
-                </li>
-              </ul>
+              {formState.projects.map((project) => (
+                <>
+                  <div className='template1RightProject'>
+                    <p className='template1ProjectTitle'>
+                      {project.projectTitle}
+                    </p>
+                    <a className='template1ProjectLink' href='#'>
+                      {project.liveDemoLink}
+                    </a>
+                    <a className='template1ProjectLink' href='#'>
+                      {project.githubLink}
+                    </a>
+                  </div>
+                  <ul className='template1RightTechStacks'>
+                    {project.techStack.map((tech) => (
+                      <li key={tech}>{tech + " " + "|"} </li>
+                    ))}
+                  </ul>
 
-
-              <div className='template1RightProject'>
-                <p className="template1ProjectTitle">Finance Flow - Tracker</p>
-                <a className="template1ProjectLink" href='#'>Live Demo Link</a>
-                <a className="template1ProjectLink" href='#'>Github Repo</a>
-              </div>
-              <ul className='template1RightTechStacks'>
-                <li>React | </li>
-                <li>AWS | </li>
-                <li>Tailwind | </li>
-                <li>Firebase | </li>
-                <li>Node.js | </li>
-              </ul>
-
-              <ul className="template1ProjectResponsibility">
-                <li>
-                  Income Tracking: Visual and tabular representations to display
-                  total income, categorized by source or period.
-                </li>
-                <li>
-                  Expense Tracking: Visualization of expenses with detailed
-                  breakdowns and categories.
-                </li>
-                <li>
-                  Dark and Light Mode: Option to switch between dark and light
-                  themes for user preference.
-                </li>
-                <li>
-                  Chat: Integrated chat feature for communication with support
-                  or team members.
-                </li>
-              </ul>
+                  <ul className='template1ProjectResponsibility'>
+                    {project.responsinility.map((resp, index) => (
+                      <li key={index}>{resp}</li>
+                    ))}
+                  </ul>
+                </>
+              ))}
             </div>
-            
           </div>
-          
-
-          
         </div>
       </div>
     </div>

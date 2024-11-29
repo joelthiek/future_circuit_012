@@ -1,21 +1,22 @@
 .resumeMain {
   display: flex;
-  height: 100vh;
-  gap: 100px;
+  height: 90vh;
+  gap: 30px;
   width: 90%;
   margin: auto;
+  margin-top: 30px;
+  flex-direction: column;
 }
 
 .resumeLeftMain {
-  width: 35%;
+  width: 100%;
   border-right: 1px solid gray;
   padding: 20px;
   overflow-y: auto;
 }
 
 .resumeRightMain {
-  width: 65%;
-  padding: 20px;
+  width: 100%;
   overflow-y: auto;
   scroll-behavior: smooth;
 }
@@ -24,3 +25,43 @@
   width: 10px;
 }
 
+.note{
+  text-align: center;
+  color: red;
+}
+
+/* Responsive Design */
+@media (min-width: 768px) {
+  .resumeMain {
+    flex-direction: row;
+    gap: 100px;
+  }
+
+  .resumeLeftMain {
+    width: 35%;
+  }
+
+  .resumeRightMain {
+    width: 65%;
+  }
+
+
+}
+
+@media (max-width: 768px) {
+  .resumeLeftMain {
+    width: 100%;
+  }
+
+  .resumeRightMain {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .resumeMain {
+    gap: 10px;
+  }
+ 
+  
+}
