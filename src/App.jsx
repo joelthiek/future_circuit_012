@@ -15,10 +15,9 @@ function App() {
       
         <Route path="/create-resume" element={
             <PrivateRoute>
-              <ResumeBuilder/>
+              <ResumeMainPage/>
             </PrivateRoute>
         }/>
-      <Route path="/resume" element={<ResumeMainPage/>}/>
       </Routes>
     </div>
   )

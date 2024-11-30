@@ -3,6 +3,7 @@ import "./Navbar.css"
 import logo from "../../assets/image/ResumeCraftLogo.png"
 import { Link } from "react-router-dom"
 import {auth} from "../../firebase/firebaseConfig"
+import { useAuth } from "../../contextAPI/AuthContext"
 
 import { useNavigate } from "react-router-dom"
 import { signOut } from "firebase/auth"
@@ -10,7 +11,8 @@ import { signOut } from "firebase/auth"
 const Navbar = () => {
   const navigate = useNavigate()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const details = localStorage.getItem("userEmail")
+
+  const {user} = useAuth()
 
   const handleClick = async () => {
     try {
@@ -41,7 +43,7 @@ const Navbar = () => {
       </div>
 
       <div className={`navbar-center ${isMenuOpen ? "open" : ""}`}>
-        {details ? (
+        {user ? (
           <ul className='nav-links'>
             <li>
               <Link to='/auth' onClick={handleClick}>
