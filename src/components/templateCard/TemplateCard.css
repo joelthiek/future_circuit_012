@@ -1,0 +1,58 @@
+/* Container for the card */
+.templatecardMain {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin-top: 30px;
+    overflow: hidden;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  /* Card image */
+  .templateCardImg {
+    width: 100%;
+    height: 100%;
+    transition: opacity 0.3s ease;
+    object-fit: contain;
+  }
+  
+  .templateCardOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0);
+    transition: background-color 0.3s ease;
+    z-index: 1;
+  }
+  
+  /* Select button */
+  .selectButton {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color:green;
+    color: white;
+    border: none;
+    padding: 6px 16px;
+    font-size: 14px;
+    border-radius: 4px;
+    display: none;
+    z-index: 2; /* Ensure it's above the overlay */
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  
+  /* Hover effect for the card */
+  .templatecardMain:hover .templateCardOverlay {
+    background-color: rgba(0, 0, 0, 0.6); /* Dark overlay */
+  }
+  
+  .templatecardMain:hover .selectButton {
+    display: block; /* Show button on hover */
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.1); /* Slight scaling effect */
+  }
+  

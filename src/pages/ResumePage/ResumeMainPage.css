@@ -1,0 +1,50 @@
+.resumeMain {
+  display: flex;
+  height: 90vh;
+  gap: 100px;
+  width: 90%;
+  margin: auto;
+  margin-top: 30px;
+}
+
+.resumeLeftMain {
+  width: 40%;
+  border-right: 1px solid gray;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.resumeRightMain {
+  width: 100%;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
+.resumeRightMain::-webkit-scrollbar {
+  width: 10px;
+}
+
+.note{
+  text-align: center;
+  color: red;
+}
+
+
+@media screen and (max-width:974px) {
+  .resumeMain {
+    flex-direction: column;
+    gap: 100px;
+    height: 100%;
+  }
+
+  .resumeLeftMain{
+    width: 100%;
+    height: 100%;
+  }
+
+  .resumeRightMain{
+    width: 100%;
+  }
+}
+
+
