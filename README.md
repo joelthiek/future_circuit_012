@@ -75,7 +75,8 @@ below there is refrence image of project:
 ![image](https://github.com/user-attachments/assets/6673a874-a075-4d90-8103-59e45db0248c)
 ![image](https://github.com/user-attachments/assets/393cd822-191f-44a1-b44b-e2189433c462)
 ![image](https://github.com/user-attachments/assets/2572c7f5-0a00-4763-9002-b9d4f61e035f)
-![image](https://github.com/user-attachments/assets/6199ce2b-8c4e-43d2-8625-96d423bdf6b3)
+![image](https://github.com/user-attachments/assets/ac9cf2e8-b233-4551-8fc4-8c4e0e898ec6)
+
 
 
 
